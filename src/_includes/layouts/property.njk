@@ -1,0 +1,262 @@
+---
+layout: layouts/base.njk
+---
+{% set property = properties.items | findBySlug(propertySlug) %}
+{% set nearest = property.nearestSettlements[0] %}
+{% set propertyId = property.longFormId or property.guid %}
+
+{% block schema %}
+<script type="application/ld+json">
+{{ property | propertyJsonLd(site, page.url) | safe }}
+</script>
+{% endblock %}
+
+{% block content %}
+<article class="property-file">
+  <header class="property-hero on-bg">
+    <div class="property-hero__inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/properties/">Properties</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ property.name }}</span>
+      </nav>
+
+      <p class="eyebrow property-hero__eyebrow">{{ property.type }}</p>
+      <h1>{{ property.name }}</h1>
+      <p class="property-hero__subtitle">{{ property.district }} &middot; {{ property.county }} &middot; Nevada &middot; USA</p>
+
+      <div class="property-source-row" aria-label="Primary source records">
+        <a href="{{ property.mindatUrl }}" rel="external noopener" target="_blank">Mindat locality <span class="mono">{{ property.mindatId }}</span></a>
+        {% if property.usgsMrds %}
+        <a href="{{ property.usgsMrdsUrl }}" rel="external noopener" target="_blank">USGS MRDS <span class="mono">{{ property.usgsMrds }}</span></a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <section class="property-facts" aria-label="Quick facts">
+    <div class="property-facts__inner">
+      <div class="property-fact">
+        <span class="property-fact__label">Coordinates</span>
+        <span class="property-fact__value mono numerals-data">{{ property.coordinates.decimal.lat }}, {{ property.coordinates.decimal.lng }}</span>
+      </div>
+      <div class="property-fact">
+        <span class="property-fact__label">Deposit Type</span>
+        <span class="property-fact__value mono numerals-data">{{ property.depositType }}</span>
+      </div>
+      <div class="property-fact">
+        <span class="property-fact__label">Commodities</span>
+        <span class="property-fact__value mono numerals-data">{{ property.commodities | join(' &middot; ') | safe }}</span>
+      </div>
+      <div class="property-fact">
+        <span class="property-fact__label">Climate</span>
+        <span class="property-fact__value mono numerals-data">{{ property.climate.koppen }} &middot; {{ property.climate.description }}</span>
+      </div>
+      <div class="property-fact">
+        <span class="property-fact__label">Nearest Settlement</span>
+        <span class="property-fact__value mono numerals-data">{{ nearest.name }} &middot; {{ nearest.distanceKm }} km</span>
+      </div>
+      <div class="property-fact">
+        <span class="property-fact__label">Mindat ID</span>
+        <span class="property-fact__value mono numerals-data">{{ property.mindatId }}</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="property-body">
+    <div class="property-body__grid">
+      <div class="property-article prose">
+        <section aria-labelledby="overview">
+          <h2 id="overview">Overview</h2>
+          {% if property.slug == "lynn-creek-placers" %}
+          <p>Lynn Creek Placers is a four-mile placer channel in the Lynn Mining District, Eureka County, situated 28 km from Carlin in the heart of the Carlin Trend. The placer hosts very fine gold averaging 920&ndash;960 fineness, derived from mineralized shear zones in the chert and shale of the Vinini Formation. Indicated reserves exceed one million cubic yards, with workings comprising numerous cuts, pits, trenches, and shafts. Recorded operations date to 1952 under the Ura Gold Mines Co.</p>
+          {% elif property.slug == "adelaide-mine" %}
+          <p>The Adelaide Mine is a historic copper-gold-silver-lead skarn deposit in the Gold Run Mining District, Humboldt County, 16.5 km from Golconda. Discovered in the 1860s, the mine operated continuously through 1940 and produced the major portion of gold, silver, copper, and lead for the district. Mineralization occurs as sulfide replacement of marble and calcareous siltstone within the Preble Formation, with ore composed of chalcopyrite and pyrrhotite plus minor sphalerite and galena. Scheelite traces in the mine waste dumps indicate tungsten potential. Most recently active in 1980 under Bullion Monarch's interest in M.&amp; B. Mining Co.</p>
+          {% endif %}
+          {% if property.workings or property.reserves or property.historicalNames %}
+          <dl class="property-data-rows" aria-label="Property overview data">
+            {% if property.workings %}
+            <div>
+              <dt>Workings</dt>
+              <dd>{{ property.workings }}</dd>
+            </div>
+            {% endif %}
+            {% if property.reserves %}
+            <div>
+              <dt>Reserves</dt>
+              <dd>{{ property.reserves }}</dd>
+            </div>
+            {% endif %}
+            {% if property.historicalNames %}
+            <div>
+              <dt>Historical Names</dt>
+              <dd>{{ property.historicalNames | join(', ') }}</dd>
+            </div>
+            {% endif %}
+          </dl>
+          {% endif %}
+        </section>
+
+        <section aria-labelledby="geology">
+          <h2 id="geology">Geology</h2>
+          <dl class="property-data-rows" aria-label="Geology data">
+            <div>
+              <dt>Host Rocks</dt>
+              <dd>{{ property.hostRocks | join(', ') }}</dd>
+            </div>
+            {% if property.structuralSetting %}
+            <div>
+              <dt>Structural Setting</dt>
+              <dd>{{ property.structuralSetting }}</dd>
+            </div>
+            {% endif %}
+            {% if property.structuralControl %}
+            <div>
+              <dt>Structural Control</dt>
+              <dd>{{ property.structuralControl }}</dd>
+            </div>
+            {% endif %}
+            {% if property.alteration %}
+            <div>
+              <dt>Alteration</dt>
+              <dd>{{ property.alteration }}</dd>
+            </div>
+            {% endif %}
+          </dl>
+          <p>{{ property.geology or property.deposit }}</p>
+          {% if property.hostDescription %}
+          <p>{{ property.hostDescription }}</p>
+          {% endif %}
+          {% if property.ore %}
+          <p>{{ property.ore }}</p>
+          {% endif %}
+        </section>
+
+        <section aria-labelledby="mineralogy">
+          <h2 id="mineralogy">Mineralogy</h2>
+          <p>The recorded mineral list contains {{ property.minerals.length }} entries, including {{ property.minerals | pluck('name') | join(', ') }}.</p>
+        </section>
+
+        <section aria-labelledby="history">
+          <h2 id="history">History &amp; Development</h2>
+          <ol class="history-list">
+            {% for item in property.history %}
+            <li>
+              <span class="history-list__year mono numerals-data">{{ item.year }}</span>
+              <span>{{ item.event }}</span>
+            </li>
+            {% endfor %}
+          </ol>
+        </section>
+
+        <section aria-labelledby="references">
+          <h2 id="references">References</h2>
+          <ul class="reference-list">
+            <li><a href="{{ property.mindatUrl }}" rel="external noopener" target="_blank">Mindat locality {{ property.mindatId }}: {{ property.name }}</a></li>
+            {% if property.usgsMrds %}
+            <li><a href="{{ property.usgsMrdsUrl }}" rel="external noopener" target="_blank">USGS MRDS record {{ property.usgsMrds }}: {{ property.name }}</a></li>
+            {% endif %}
+            {% for reference in property.references %}
+            <li>{{ reference }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+      </div>
+
+      <aside class="property-sidebar sticky-sidebar" aria-label="Property actions and sources">
+        <section class="sidebar-card map-placeholder" aria-labelledby="map-placeholder-title">
+          <h2 id="map-placeholder-title">Map</h2>
+          <div class="map-placeholder__box">
+            <span class="mono">Interactive map &mdash; Step 6</span>
+          </div>
+          <dl class="sidebar-data">
+            <div>
+              <dt>WGS-84</dt>
+              <dd class="mono numerals-data">{{ property.coordinates.decimal.lat }}, {{ property.coordinates.decimal.lng }}</dd>
+            </div>
+            <div>
+              <dt>DMS</dt>
+              <dd class="mono numerals-data">{{ property.coordinates.dms }}</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="sidebar-card" aria-labelledby="packet-title">
+          <h2 id="packet-title">Request Property Packet</h2>
+          <p>Request the source file, public-record references, and visit coordination directly from Goldstone LLC.</p>
+          <a class="sidebar-cta" href="/contact/">Contact Dennis Blancey</a>
+        </section>
+
+        <section class="sidebar-card" aria-labelledby="quick-links-title">
+          <h2 id="quick-links-title">Quick Links</h2>
+          <ul class="sidebar-link-list">
+            <li><a href="{{ property.mindatUrl }}" rel="external noopener" target="_blank">Mindat locality record</a></li>
+            {% if property.usgsMrds %}
+            <li><a href="{{ property.usgsMrdsUrl }}" rel="external noopener" target="_blank">USGS MRDS record</a></li>
+            {% endif %}
+            <li><a href="/nevada-mining/">Nevada mining context</a></li>
+            <li><a href="/due-diligence/">Buyer due diligence</a></li>
+          </ul>
+        </section>
+
+        <section class="sidebar-card" aria-labelledby="contact-title">
+          <h2 id="contact-title">Contact</h2>
+          <ul class="sidebar-contact">
+            {% for i in range(0, site.contact.phones.length) %}
+            <li><a href="tel:{{ site.contact.phonesTel[i] }}">{{ site.contact.phones[i] }}</a></li>
+            {% endfor %}
+            <li><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <section class="mineral-section" aria-labelledby="minerals-grid-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Mineral record</span>
+        <h2 id="minerals-grid-title">Minerals Reported at {{ property.name }}</h2>
+      </div>
+      <div class="mineral-grid">
+        {% for mineral in property.minerals %}
+        <article class="mineral-card">
+          <h3>{{ mineral.name }}</h3>
+          <p class="mineral-card__formula mono">{{ mineral.formula }}</p>
+          <p class="mineral-card__strunz">{{ mineral.strunz }}</p>
+        </article>
+        {% endfor %}
+      </div>
+      {% if property.mineralsNote %}
+      <p class="mineral-footnote">{{ property.mineralsNote }}</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="commodity-band on-bg" aria-label="Commodity emphasis">
+    <div class="commodity-band__inner">
+      {% for commodity in property.commodities %}
+      <span>{{ commodity }}</span>{% if not loop.last %}<span aria-hidden="true">&middot;</span>{% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="property-bottom-cta on-bg" aria-labelledby="inquire-title">
+    <div class="property-bottom-cta__inner">
+      <div>
+        <p class="eyebrow">Direct inquiry</p>
+        <h2 id="inquire-title">Inquire about {{ property.name }}</h2>
+      </div>
+      <div class="property-bottom-cta__links">
+        {% for i in range(0, site.contact.phones.length) %}
+        <a href="tel:{{ site.contact.phonesTel[i] }}">{{ site.contact.phones[i] }}</a>
+        {% endfor %}
+        <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
+        <a class="sidebar-cta" href="/contact/">Open contact form</a>
+      </div>
+    </div>
+  </section>
+</article>
+{% endblock %}

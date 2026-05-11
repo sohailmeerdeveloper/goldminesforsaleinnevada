@@ -32,6 +32,94 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("year", () => new Date().getFullYear());
 
+  eleventyConfig.addFilter("findBySlug", (items, slug) =>
+    (items || []).find((item) => item.slug === slug)
+  );
+
+  eleventyConfig.addFilter("json", (value) =>
+    JSON.stringify(value, null, 2).replace(/</g, "\\u003c")
+  );
+
+  eleventyConfig.addFilter("pluck", (items, key) =>
+    (items || []).map((item) => item[key])
+  );
+
+  eleventyConfig.addFilter("propertyJsonLd", (property, site, pageUrl) => {
+    const url = `${site.url}${pageUrl}`;
+    const coordinates = property.coordinates.decimal;
+    const place = {
+      "@context": "https://schema.org",
+      "@type": "Place",
+      "@id": `${url}#place`,
+      "name": property.name,
+      "url": url,
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": coordinates.lat,
+        "longitude": coordinates.lng,
+      },
+      "containedInPlace": {
+        "@type": "Place",
+        "name": property.district,
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": property.county,
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Nevada",
+            "containedInPlace": { "@type": "Country", "name": "USA" },
+          },
+        },
+      },
+    };
+
+    const additionalProperty = [
+      ...property.commodities.map((commodity) => ({
+        "@type": "PropertyValue",
+        "name": "Commodity",
+        "value": commodity,
+      })),
+      ...property.minerals.map((mineral) => ({
+        "@type": "PropertyValue",
+        "name": mineral.name,
+        "value": mineral.formula,
+        "description": mineral.strunz,
+      })),
+    ];
+
+    return JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "@id": `${url}#product`,
+        "name": property.name,
+        "description": property.deposit,
+        "category": "Mining property",
+        "url": url,
+        "brand": { "@type": "Organization", "name": site.name, "url": site.url },
+        "offers": {
+          "@type": "Offer",
+          "url": url,
+          "availability": "https://schema.org/InStock",
+          "seller": { "@type": "Organization", "name": site.name },
+        },
+        "additionalProperty": additionalProperty,
+        "geo": place,
+      },
+      place,
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url },
+          { "@type": "ListItem", "position": 2, "name": "Properties", "item": `${site.url}/properties/` },
+          { "@type": "ListItem", "position": 3, "name": property.name, "item": url },
+        ],
+      },
+    ], null, 2).replace(/</g, "\\u003c");
+  });
+
   /* ── Collections ──────────────────────────────────────────────── */
   eleventyConfig.addCollection("properties", (api) =>
     api.getFilteredByGlob("src/properties/*.njk").filter((i) => i.data.property)

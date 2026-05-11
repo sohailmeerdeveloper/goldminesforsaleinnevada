@@ -1,11 +1,91 @@
 ---
-layout: layouts/page.njk
+layout: layouts/base.njk
 title: Contact Goldstone LLC
 meta_title: Contact Goldstone LLC
-meta_description: "Contact Dennis Blancey of Goldstone LLC about Nevada gold, copper, and silver mining properties."
+meta_description: "Contact Dennis Blancey directly about Lynn Creek Placers, Adelaide Mine, or a Nevada mining property packet from Goldstone LLC."
 ---
-<section class="section wrap wrap--narrow">
-  <p class="eyebrow">Direct Inquiry</p>
-  <h1 style="margin-top: var(--s-3)">Contact Goldstone LLC</h1>
-  <p class="lede" style="margin-top: var(--s-5);">Step 8 and step 10 replace this placeholder with the contact card and Netlify inquiry form.</p>
-</section>
+<article class="content-page">
+  <header class="content-hero on-bg">
+    <div class="content-hero__inner">
+      <p class="eyebrow">Direct inquiry</p>
+      <h1>Contact Goldstone LLC</h1>
+      <p class="content-hero__lede">Inquiries are reviewed by Dennis Blancey directly. Use the form below to request a property packet or arrange a focused follow-up.</p>
+    </div>
+  </header>
+
+  <section class="content-section">
+    <div class="contact-layout">
+      <aside class="contact-card" aria-labelledby="contact-card-title">
+        <h2 id="contact-card-title">Contact Card</h2>
+        <dl class="contact-card__list">
+          <div>
+            <dt>Phone</dt>
+            <dd><a href="tel:+17754005337">+1 775 400 5337</a></dd>
+          </div>
+          <div>
+            <dt>Phone</dt>
+            <dd><a href="tel:+17755448494">+1 775 544 8494</a></dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd><a href="mailto:Grandnevadacorp@gmail.com">Grandnevadacorp@gmail.com</a></dd>
+          </div>
+          <div>
+            <dt>Offices</dt>
+            <dd class="mono numerals-data">Carlin NV 89822<br>Golconda NV 89414<br>Carson City NV 89702</dd>
+          </div>
+        </dl>
+      </aside>
+
+      <section class="inquiry-panel" aria-labelledby="inquiry-title">
+        <p class="eyebrow">Property packet</p>
+        <h2 id="inquiry-title">Request Property Packet</h2>
+        <form class="inquiry-form" name="inquiry" method="POST" action="/contact/thank-you/" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="inquiry">
+          <p class="form-honeypot">
+            <label>Do not fill this out if you are human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+          </p>
+
+          <div class="field">
+            <label for="name">Name <span aria-hidden="true">*</span></label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization">
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+
+          <div class="field field--full">
+            <label for="property-interest">Property of interest</label>
+            <select id="property-interest" name="property-interest">
+              <option value="Lynn Creek Placers">Lynn Creek Placers</option>
+              <option value="Adelaide Mine">Adelaide Mine</option>
+              <option value="Both properties">Both properties</option>
+              <option value="Other / not sure">Other / not sure</option>
+            </select>
+          </div>
+
+          <div class="field field--full">
+            <label for="message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="7" required></textarea>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Request property packet</button>
+        </form>
+
+        <p class="due-note">Prospective buyers should conduct independent due diligence including title verification, mineral rights review, and on-site inspection.</p>
+      </section>
+    </div>
+  </section>
+</article>

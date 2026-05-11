@@ -228,10 +228,12 @@ extra_js:
 {# ── Contact band ────────────────────────────────────────────────── #}
 <section class="contact-band on-bg" aria-labelledby="contact-h2">
   <div class="contact-band__inner">
-    <div>
-      <span class="eyebrow">Request a property packet</span>
-      <h2 id="contact-h2" style="margin-top: var(--s-3)">Inquiries reviewed by Dennis Blancey directly.</h2>
-      <p class="lede">For full property files, technical reports, and on-site visit coordination, contact Goldstone LLC at any of the offices listed to the right.</p>
+    <div class="contact-band__copy">
+      <div class="contact-band__intro">
+        <span class="eyebrow">Request a property packet</span>
+        <h2 id="contact-h2" style="margin-top: var(--s-3)">Inquiries reviewed by Dennis Blancey directly.</h2>
+        <p class="lede">For full property files, technical reports, and on-site visit coordination, contact Goldstone LLC at any of the offices listed to the right.</p>
+      </div>
 
       <div class="contact-band__cta">
         <p>Use the full inquiry form to request a property packet for Lynn Creek Placers, Adelaide Mine, or both current listings.</p>
@@ -239,7 +241,7 @@ extra_js:
       </div>
     </div>
 
-    <div>
+    <div class="contact-band__channels-wrap">
       <ul class="contact-channels">
         <li><span class="channel__label">Phone</span><a href="tel:{{ site.contact.phonesTel[0] }}">{{ site.contact.phones[0] }}</a></li>
         <li><span class="channel__label">Phone</span><a href="tel:{{ site.contact.phonesTel[1] }}">{{ site.contact.phones[1] }}</a></li>

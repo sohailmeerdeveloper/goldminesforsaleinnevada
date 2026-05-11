@@ -1,0 +1,148 @@
+/* ── Site header ──────────────────────────────────────────────────── */
+.site-header {
+  padding: var(--s-4) 0;
+  border-bottom: var(--hairline);
+}
+.site-header__inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+}
+
+/* ── Logo lockup ─────────────────────────────────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  text-decoration: none;
+  color: var(--ink);
+}
+.logo:hover { color: var(--ink); }
+.logo__mark { flex-shrink: 0; }
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1;
+}
+.logo__wordmark {
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.logo__strapline {
+  font-family: var(--font-sans);
+  font-size: 0.625rem;
+  font-weight: 500;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+/* ── Primary nav ─────────────────────────────────────────────────── */
+.nav-primary { display: flex; gap: var(--s-5); align-items: center; }
+.nav-primary a {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--ink-soft);
+  transition: color var(--dur) var(--ease);
+}
+.nav-primary a:hover { color: var(--copper); }
+.nav-primary a[aria-current="page"] { color: var(--ink); }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--s-2) var(--s-4);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--paper-pure);
+  background: var(--copper);
+  border-radius: var(--r-2);
+  transition: background var(--dur) var(--ease);
+}
+.nav-cta:hover { background: var(--copper-deep); color: var(--paper-pure); }
+
+/* ── Mobile nav toggle ───────────────────────────────────────────── */
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.nav-toggle svg { width: 24px; height: 24px; }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  .nav-primary {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--paper);
+    border-bottom: var(--hairline);
+    padding: var(--s-5) var(--gutter);
+    gap: var(--s-4);
+  }
+  .nav-primary.is-open { display: flex; }
+  .site-header { position: relative; }
+}
+
+/* ── Site footer ─────────────────────────────────────────────────── */
+.site-footer {
+  border-top: var(--hairline);
+  padding: var(--s-8) 0 var(--s-6);
+  background: var(--bg);
+  color: var(--on-bg);
+}
+.site-footer__inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--s-7);
+}
+@media (max-width: 768px) {
+  .site-footer__grid { grid-template-columns: 1fr; gap: var(--s-6); }
+}
+
+.site-footer h5 { color: var(--on-bg-soft); margin-bottom: var(--s-3); }
+.site-footer p  { color: var(--on-bg); max-width: 48ch; }
+.site-footer a  { text-decoration: underline; text-decoration-color: var(--bg-rule); text-underline-offset: 0.15em; }
+.site-footer a:hover { color: var(--copper-bright); text-decoration-color: var(--copper-bright); }
+.site-footer .logo { text-decoration: none; }
+
+.footer-offices { list-style: none; padding: 0; margin: 0; }
+.footer-offices li { padding: var(--s-2) 0; border-bottom: var(--hairline-on-bg); font-size: var(--fs-sm); }
+.footer-offices li:last-child { border-bottom: 0; }
+
+.footer-disclaimer {
+  margin-top: var(--s-7);
+  padding-top: var(--s-5);
+  border-top: var(--hairline-on-bg);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-data);
+  color: var(--on-bg-soft);
+  max-width: 96ch;
+}
+.footer-copyright {
+  margin-top: var(--s-4);
+  font-size: var(--fs-xs);
+  color: var(--on-bg-soft);
+}

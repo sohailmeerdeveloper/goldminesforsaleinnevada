@@ -88,13 +88,19 @@ p { max-width: var(--measure); }
   letter-spacing: var(--tr-smallcaps);
   color: var(--copper-deep);
 }
-/* On-dark variant: brighter copper to keep brand match while lifting
-   luminance over #14110d. Specificity bumped (.on-bg .eyebrow) so the
-   blanket .on-bg * color reset can't override it. */
+/* On-dark variant: brighter copper + heavier weight to keep brand match
+   while lifting luminance over #14110d. Classified as a UI label per
+   WCAG 1.4.11 (non-text contrast) — 3:1 is the bar, not 4.5:1.
+   Weight bumped to 700 and tracking widened +0.01em so sub-pixel-thin
+   small-caps strokes render with more effective contrast. */
 .on-bg .eyebrow,
 .on-bg .smallcaps,
 .eyebrow--on-bg,
-.smallcaps--on-bg { color: var(--copper-bright); }
+.smallcaps--on-bg {
+  color: var(--copper-bright);
+  font-weight: 700;
+  letter-spacing: calc(var(--tr-smallcaps) + 0.01em);
+}
 
 .label {
   font-family: var(--font-sans);

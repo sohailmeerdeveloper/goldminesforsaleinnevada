@@ -1,0 +1,64 @@
+/* ── Skip link ───────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--s-4);
+  z-index: 999;
+  padding: var(--s-2) var(--s-4);
+  background: var(--copper);
+  color: var(--paper-pure);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--r-2);
+}
+.skip-link:focus { top: var(--s-2); }
+
+/* ── Page shell ──────────────────────────────────────────────────── */
+.wrap {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.wrap--narrow { max-width: var(--maxw-narrow); }
+
+/* ── 12-column grid (named lines) ────────────────────────────────── */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--s-5);
+}
+
+/* Common splits */
+.col-8 { grid-column: span 8; }
+.col-4 { grid-column: span 4; }
+.col-9 { grid-column: span 9; }
+.col-3 { grid-column: span 3; }
+.col-6 { grid-column: span 6; }
+.col-12 { grid-column: 1 / -1; }
+
+@media (max-width: 1024px) {
+  .col-8, .col-9 { grid-column: 1 / -1; }
+  .col-4, .col-3 { grid-column: 1 / -1; }
+}
+
+/* ── Section spacing ─────────────────────────────────────────────── */
+.section       { padding-block: var(--s-9); }
+.section--sm   { padding-block: var(--s-7); }
+.section--lg   { padding-block: var(--s-10); }
+.section--dark {
+  background: var(--bg);
+  color: var(--on-bg);
+}
+.section--bone { background: var(--bone); }
+
+/* ── Sticky sidebar ──────────────────────────────────────────────── */
+.sticky-sidebar {
+  position: sticky;
+  top: var(--s-7);
+  align-self: start;
+}
+
+@media (max-width: 1024px) {
+  .sticky-sidebar { position: static; }
+}

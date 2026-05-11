@@ -1,0 +1,60 @@
+<footer class="site-footer on-bg" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+
+      {# ── Brand column ──────────────────────────────────────────── #}
+      <div>
+        <a href="/" class="logo" style="margin-bottom: var(--s-4); display: inline-flex;">
+          <svg class="logo__mark" width="50" height="30" viewBox="0 0 56 34" aria-hidden="true">
+            <path d="M2 27 L20 6 L36 27" fill="none" stroke="var(--copper)" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter" />
+            <path d="M20 27 L36 9 L54 27" fill="none" stroke="var(--copper)" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter" />
+          </svg>
+          <span class="logo__text">
+            <span class="logo__wordmark" style="color: var(--paper-pure)">Goldstone LLC</span>
+            <span class="logo__strapline" style="color: var(--on-bg-soft)">Since 1989</span>
+          </span>
+        </a>
+        <p style="font-size: var(--fs-sm);">{{ site.tagline }}</p>
+      </div>
+
+      {# ── Offices ───────────────────────────────────────────────── #}
+      <div>
+        <h5 class="label">Offices</h5>
+        <ul class="footer-offices">
+          {% for office in site.offices %}
+          <li>{{ office.city }}, {{ office.state }} {{ office.postal }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      {# ── Contact ───────────────────────────────────────────────── #}
+      <div>
+        <h5 class="label">Contact</h5>
+        <ul class="footer-offices">
+          {% for i in range(0, site.contact.phones.length) %}
+          <li><a href="tel:{{ site.contact.phonesTel[i] }}">{{ site.contact.phones[i] }}</a></li>
+          {% endfor %}
+          <li><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>
+        </ul>
+      </div>
+
+      {# ── Navigation ────────────────────────────────────────────── #}
+      <div>
+        <h5 class="label">Navigate</h5>
+        <ul class="footer-offices">
+          <li><a href="/properties/">Properties</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/nevada-mining/">Nevada Mining</a></li>
+          <li><a href="/due-diligence/">Due Diligence</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-disclaimer">
+      Property descriptions reflect publicly available data from the USGS Mineral Resources Data System (MRDS) and the Mindat.org geological database. Prospective buyers should conduct independent due diligence including title verification, mineral rights review, and on-site inspection. Goldstone LLC does not provide investment advice.
+    </div>
+    <p class="footer-copyright">&copy; {{ "" | year }} {{ site.name }}. All rights reserved.</p>
+  </div>
+</footer>

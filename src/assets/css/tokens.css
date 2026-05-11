@@ -1,3 +1,7 @@
+/* Two copper tokens, intentional: --copper matches the printed business-card
+   terracotta on paper surfaces; --copper-bright is the on-dark variant for
+   labels and CTAs over --bg. Do not consolidate. */
+
 :root {
   /* ── Earth + document tones ─────────────────────────────────────── */
   --ink:           #1a1612;

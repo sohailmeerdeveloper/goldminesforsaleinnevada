@@ -1,0 +1,43 @@
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a href="/" class="logo" aria-label="{{ site.name }} - home">
+      <svg class="logo__mark" width="56" height="34" viewBox="0 0 56 34" aria-hidden="true">
+        {#- Two open, overlapping ridges after the business-card mark. #}
+        <path d="M2 27 L20 6 L36 27" fill="none" stroke="var(--copper)" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter" />
+        <path d="M20 27 L36 9 L54 27" fill="none" stroke="var(--copper)" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter" />
+      </svg>
+      <span class="logo__text">
+        <span class="logo__wordmark">Goldstone LLC</span>
+        <span class="logo__strapline">Since 1989</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-primary" aria-label="Toggle navigation">
+      <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+
+    <nav id="nav-primary" class="nav-primary" aria-label="Main navigation">
+      <a href="/properties/"{% if page.url == "/properties/" %} aria-current="page"{% endif %}>Properties</a>
+      <a href="/about/"{% if page.url == "/about/" %} aria-current="page"{% endif %}>About</a>
+      <a href="/nevada-mining/"{% if page.url == "/nevada-mining/" %} aria-current="page"{% endif %}>Nevada Mining</a>
+      <a href="/due-diligence/"{% if page.url == "/due-diligence/" %} aria-current="page"{% endif %}>Due Diligence</a>
+      <a href="/contact/" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  (function(){
+    var btn = document.querySelector('.nav-toggle');
+    var nav = document.getElementById('nav-primary');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  })();
+</script>

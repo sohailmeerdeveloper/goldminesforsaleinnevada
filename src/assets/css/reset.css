@@ -26,7 +26,8 @@ button { background: none; border: none; padding: 0; cursor: pointer; }
 
 table { border-collapse: collapse; border-spacing: 0; }
 
-:where(h1, h2, h3, h4, h5, h6) { text-wrap: balance; overflow-wrap: break-word; }
+:where(h1, h2) { text-wrap: balance; overflow-wrap: break-word; }
+:where(h3, h4, h5, h6) { overflow-wrap: break-word; }
 
 :where(p, li, dd, blockquote) { text-wrap: pretty; }
 

@@ -107,14 +107,23 @@
     right: 0;
     z-index: 30;
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
     background: var(--paper-pure);
     border-bottom: var(--hairline);
     padding: var(--s-5) var(--gutter);
-    gap: var(--s-4);
+    gap: var(--s-3);
   }
   .nav-primary.is-open { display: flex; }
-  .nav-primary a { padding: var(--s-2) 0; }
+  .nav-primary a {
+    padding: var(--s-2) 0;
+    font-size: var(--fs-md);
+  }
+  .nav-primary .nav-cta {
+    align-self: flex-start;
+    margin-top: var(--s-3);
+    padding: var(--s-3) var(--s-5);
+    font-size: var(--fs-sm);
+  }
   .site-header { position: relative; z-index: 20; }
 }
 

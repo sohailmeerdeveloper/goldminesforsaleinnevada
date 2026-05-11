@@ -1,0 +1,155 @@
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);            /* 1.55 — denser default; long-form opts in via .prose */
+  color: var(--ink);
+  background: var(--paper);
+  font-feature-settings: "kern", "liga", "calt";
+  font-variant-numeric: oldstyle-nums;
+}
+
+/* ── Headings — serif editorial ─────────────────────────────────── */
+h1, h2, h3, h4, h5, h6,
+.h-serif {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  font-variant-numeric: lining-nums;
+  font-optical-sizing: auto;              /* force opsz axis — Source Serif 4 variable */
+}
+
+h1, .h1 {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+h2, .h2 { font-size: var(--fs-3xl); }
+h3, .h3 { font-size: var(--fs-2xl); }
+h4, .h4 { font-size: var(--fs-xl); line-height: var(--lh-snug); }
+h5, .h5 {
+  font-size: var(--fs-sm);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tr-label);
+  color: var(--ink-soft);
+}
+h6, .h6 { font-size: var(--fs-base); font-family: var(--font-sans); font-weight: 600; }
+
+.display {
+  font-family: var(--font-serif);
+  font-size: var(--fs-display);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+
+/* ── Body prose ─────────────────────────────────────────────────── */
+p { max-width: var(--measure); }
+
+/* Long-form reading: opt in with .prose. Loosens line-height to 1.65 and
+   uses --prose-measure so reading width is tunable in one place. */
+.prose {
+  max-width: var(--prose-measure);
+  line-height: var(--lh-prose);
+}
+.prose p { max-width: var(--prose-measure); }
+.prose p + p { margin-top: var(--s-4); }
+.prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--copper);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+.prose a:hover { color: var(--copper-deep); text-decoration-thickness: 2px; }
+
+/* ── Lede ───────────────────────────────────────────────────────── */
+.lede {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+/* ── Eyebrow / small-caps labels ────────────────────────────────── */
+.eyebrow,
+.smallcaps {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  font-variant-caps: all-small-caps;
+  text-transform: lowercase;
+  letter-spacing: var(--tr-smallcaps);
+  color: var(--copper-deep);
+}
+/* On-dark variant: brighter copper to keep brand match while lifting
+   luminance over #14110d. Specificity bumped (.on-bg .eyebrow) so the
+   blanket .on-bg * color reset can't override it. */
+.on-bg .eyebrow,
+.on-bg .smallcaps,
+.eyebrow--on-bg,
+.smallcaps--on-bg { color: var(--copper-bright); }
+
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tr-label);
+  color: var(--ink-faint);
+}
+
+/* ── Mono — numbers, coordinates, formulas ──────────────────────── */
+.mono, code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  font-variant-numeric: lining-nums tabular-nums; /* non-negotiable for coordinate columns */
+  font-size: 0.92em;
+}
+.mono--lg { font-size: 1em; letter-spacing: -0.01em; }
+
+/* ── Numeral utilities — opt-in without knowing font-variant syntax ─ */
+.numerals-lining   { font-variant-numeric: lining-nums; }
+.numerals-tabular  { font-variant-numeric: tabular-nums; }
+.numerals-lining.numerals-tabular,
+.numerals-data     { font-variant-numeric: lining-nums tabular-nums; }
+.numerals-oldstyle { font-variant-numeric: oldstyle-nums; }
+
+/* ── Data figure (USGS-style numeric callout) ───────────────────── */
+.figure-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+/* ── Dark surface variants ──────────────────────────────────────── */
+.on-bg { color: var(--on-bg); }
+.on-bg :where(p, li, dd, dt, span, blockquote, time) { color: var(--on-bg); }
+.on-bg :where(h1, h2, h3, h4) { color: var(--paper-pure); }
+.on-bg :where(.label, .mono) { color: var(--on-bg-soft); }
+
+/* ── Links (default) ────────────────────────────────────────────── */
+a { color: var(--ink); }
+a:hover { color: var(--copper-deep); }
+.on-bg a { color: var(--on-bg); }
+.on-bg a:hover { color: var(--copper); }
+
+/* ── Hairline rule ──────────────────────────────────────────────── */
+hr {
+  border: 0;
+  border-top: var(--hairline);
+  margin: var(--s-6) 0;
+}
+.on-bg hr { border-top: var(--hairline-on-bg); }
+
+/* ── List defaults inside prose ─────────────────────────────────── */
+.prose ul, .prose ol { padding-left: 1.4em; max-width: var(--measure); }
+.prose li + li { margin-top: var(--s-2); }

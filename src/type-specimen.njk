@@ -1,0 +1,174 @@
+---
+title: Type specimen — Goldstone LLC design system
+layout: false
+permalink: /type-specimen/index.html
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>{{ title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <style>
+    /* Specimen-only — not part of production CSS */
+    .spec-wrap { max-width: var(--maxw); margin: 0 auto; padding: var(--s-7) var(--gutter); }
+    .spec-section { padding: var(--s-7) 0; border-top: var(--hairline); }
+    .spec-section:first-of-type { border-top: 0; }
+    .on-bg.spec-section { border-top: var(--hairline-on-bg); }
+
+    .spec-row {
+      display: grid;
+      grid-template-columns: 12ch 1fr;
+      gap: var(--s-5);
+      align-items: baseline;
+      padding: var(--s-3) 0;
+      border-bottom: var(--hairline-soft);
+    }
+    .on-bg .spec-row { border-bottom: var(--hairline-on-bg); }
+    .spec-row:last-child { border-bottom: 0; }
+    .spec-row .label { padding-top: 0.4em; }
+
+    .spec-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      margin-top: var(--s-5);
+    }
+    @media (max-width: 720px) { .spec-grid-3 { grid-template-columns: 1fr; } }
+
+    .swatch {
+      border: var(--hairline-soft);
+      padding: var(--s-4);
+    }
+    .swatch__chip {
+      height: 56px;
+      margin-bottom: var(--s-3);
+      border: var(--hairline-soft);
+    }
+
+    .on-bg-band {
+      background: var(--bg);
+      padding: var(--s-8) var(--gutter);
+      margin: var(--s-8) calc(-1 * var(--gutter)) 0;
+    }
+    .on-bg-band .inner { max-width: var(--maxw); margin: 0 auto; }
+
+    .data-card {
+      border: var(--hairline);
+      padding: var(--s-5);
+      max-width: 360px;
+    }
+    .data-card dt {
+      font-family: var(--font-sans);
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--tr-label);
+      color: var(--ink-faint);
+      margin-top: var(--s-3);
+    }
+    .data-card dt:first-of-type { margin-top: 0; }
+    .data-card dd {
+      font-family: var(--font-mono);
+      font-variant-numeric: lining-nums tabular-nums;
+      font-size: var(--fs-base);
+      color: var(--ink);
+      line-height: var(--lh-data);
+    }
+  </style>
+</head>
+<body>
+  <div class="spec-wrap">
+
+    <header class="spec-section">
+      <p class="eyebrow">Goldstone LLC · type specimen · v0.1</p>
+      <h1 class="display" style="margin-top: var(--s-3)">Copper. Silver. Gold.<br>Nevada mining properties.</h1>
+      <p class="lede" style="margin-top: var(--s-5)">A test page rendering Source Serif 4, Inter, and JetBrains Mono together at the documented type scale, against both paper and ink backgrounds. Not part of the production site.</p>
+    </header>
+
+    <!-- ── Heading scale ─────────────────────────────────────── -->
+    <section class="spec-section">
+      <p class="label">Heading scale · 1.25 ratio</p>
+      <div class="spec-row"><span class="label">display</span><span class="display">Two patented mining properties</span></div>
+      <div class="spec-row"><span class="label">h1</span><h1>Adelaide Mine — Gold Run District</h1></div>
+      <div class="spec-row"><span class="label">h2</span><h2>Geology and host rocks</h2></div>
+      <div class="spec-row"><span class="label">h3</span><h3>Mineralogy</h3></div>
+      <div class="spec-row"><span class="label">h4</span><h4>References cited</h4></div>
+      <div class="spec-row"><span class="label">h5</span><h5>Deposit type</h5></div>
+    </section>
+
+    <!-- ── Body, lede, prose ─────────────────────────────────── -->
+    <section class="spec-section">
+      <p class="label">Body prose · Inter 400/500 · 16/1.65</p>
+      <div class="prose" style="margin-top: var(--s-5)">
+        <p>The Adelaide Mine is a historic copper-gold-silver-lead skarn deposit in the Gold Run Mining District, Humboldt County, 16.5 km from Golconda. Discovered in the 1860s, the mine operated continuously through 1940 and produced the major portion of gold, silver, copper, and lead for the district.</p>
+        <p>Mineralization occurs as <a href="#">sulfide replacement</a> of marble and calcareous siltstone within the Preble Formation, with ore composed of chalcopyrite and pyrrhotite plus minor sphalerite and galena. Scheelite traces in the mine waste dumps indicate tungsten potential.</p>
+      </div>
+    </section>
+
+    <!-- ── Eyebrows, labels, small-caps ──────────────────────── -->
+    <section class="spec-section">
+      <p class="label">Eyebrows · labels · small-caps</p>
+      <div class="spec-row"><span class="label">eyebrow</span><span class="eyebrow">Goldstone LLC · Nevada · est. 1989</span></div>
+      <div class="spec-row"><span class="label">smallcaps</span><span class="smallcaps">Deposit type · WGS-84 · Köppen BSk</span></div>
+      <div class="spec-row"><span class="label">label</span><span class="label">Coordinates · commodities · climate</span></div>
+    </section>
+
+    <!-- ── Mono — data card ──────────────────────────────────── -->
+    <section class="spec-section">
+      <p class="label">Mono · JetBrains Mono · numbers, coordinates, formulas</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7); align-items: start; margin-top: var(--s-5);">
+        <div>
+          <p>Inline: the recovered gold is very fine, averaging <span class="mono">920 to 960</span> fineness. Indicated reserves exceed <span class="mono">1,000,000 yd³</span>. Coordinates: <span class="mono">40.92575, −116.28897</span>.</p>
+          <p style="margin-top: var(--s-4);">Chemical formulas: Native Gold <span class="mono">Au</span>, Bismuthinite <span class="mono">Bi₂S₃</span>, Chalcopyrite <span class="mono">CuFeS₂</span>, Vesuvianite <span class="mono">Ca₁₉Fe³⁺Al₄(Al₆Mg₂)□₄□[Si₂O₇]₄[(SiO₄)₁₀]O(OH)₉</span>.</p>
+        </div>
+        <dl class="data-card">
+          <dt>Locality</dt><dd>Adelaide Mine</dd>
+          <dt>Coordinates (WGS-84)</dt><dd>40.80509, −117.49462</dd>
+          <dt>Climate (Köppen)</dt><dd>BSk</dd>
+          <dt>Mindat ID</dt><dd>59702</dd>
+          <dt>USGS MRDS</dt><dd>10014368</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ── Palette ───────────────────────────────────────────── -->
+    <section class="spec-section">
+      <p class="label">Palette · earth + document tones</p>
+      <div class="spec-grid-3">
+        <div class="swatch"><div class="swatch__chip" style="background: var(--ink)"></div><strong>--ink</strong><br><span class="mono">#1a1612</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--ink-soft)"></div><strong>--ink-soft</strong><br><span class="mono">#3d342c</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--paper)"></div><strong>--paper</strong><br><span class="mono">#f4efe6</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--bone)"></div><strong>--bone</strong><br><span class="mono">#e8e1d3</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--copper)"></div><strong>--copper</strong><br><span class="mono">#a8472b</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--copper-deep)"></div><strong>--copper-deep</strong><br><span class="mono">#7a2f1a</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--gold)"></div><strong>--gold</strong><br><span class="mono">#b8862a</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--gold-deep)"></div><strong>--gold-deep</strong><br><span class="mono">#8a611a</span></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--silver)"></div><strong>--silver</strong><br><span class="mono">#8a8680</span></div>
+      </div>
+    </section>
+
+    <!-- ── On the dark surface ───────────────────────────────── -->
+    <div class="on-bg-band on-bg">
+      <div class="inner">
+        <p class="eyebrow eyebrow--on-bg">Hero surface · --bg · #14110d</p>
+        <h1 style="margin-top: var(--s-3)">Two patented mining properties.<br>Verified geology. Direct from the principal.</h1>
+        <p class="lede" style="margin-top: var(--s-5); color: var(--on-bg-soft); max-width: 60ch;">Goldstone LLC offers gold, copper, and silver mining properties in Eureka and Humboldt Counties, Nevada — each documented in the USGS Mineral Resources Data System and the Mindat geological database.</p>
+        <p style="margin-top: var(--s-5);">
+          <span class="mono" style="color: var(--on-bg)">02</span> <span class="label" style="color: var(--on-bg-soft)">Properties listed</span>
+          &nbsp;·&nbsp;
+          <span class="mono" style="color: var(--on-bg)">Au · Ag · Cu · Pb · Zn · W</span> <span class="label" style="color: var(--on-bg-soft)">Commodities</span>
+          &nbsp;·&nbsp;
+          <span class="mono" style="color: var(--on-bg)">1860s</span> <span class="label" style="color: var(--on-bg-soft)">Earliest recorded production</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

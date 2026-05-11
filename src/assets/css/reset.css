@@ -1,0 +1,54 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd { margin: 0; }
+
+ul[role="list"], ol[role="list"] { list-style: none; padding: 0; margin: 0; }
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+}
+
+a { color: inherit; text-decoration-skip-ink: auto; }
+
+img, picture, svg, video, canvas { max-width: 100%; display: block; }
+
+svg { fill: currentColor; }
+
+input, button, textarea, select { font: inherit; color: inherit; }
+
+button { background: none; border: none; padding: 0; cursor: pointer; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+:where(h1, h2, h3, h4, h5, h6) { text-wrap: balance; overflow-wrap: break-word; }
+
+:where(p, li, dd, blockquote) { text-wrap: pretty; }
+
+:focus { outline: none; }
+
+:focus-visible {
+  outline: 2px solid var(--copper);   /* 3.21:1 on --paper, 3.21:1 on --bg — passes WCAG 1.4.11 (3:1) */
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+/* On dark surfaces, use the brighter copper for extra margin (3.85:1) */
+.on-bg :focus-visible {
+  outline-color: var(--copper-bright);
+}
+
+::selection { background: var(--copper); color: var(--paper-pure); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

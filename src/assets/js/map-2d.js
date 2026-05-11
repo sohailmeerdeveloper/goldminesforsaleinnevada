@@ -140,12 +140,13 @@
   }
 
   function initMap(element) {
+    var stage = element.closest(".js-map-stage");
     var property = {
-      name: element.dataset.propertyName,
-      lat: Number(element.dataset.lat),
-      lng: Number(element.dataset.lng),
-      mindatId: element.dataset.mindatId,
-      mrds: element.dataset.mrds,
+      name: stage ? stage.dataset.propertyName : element.dataset.propertyName,
+      lat: Number(stage ? stage.dataset.lat : element.dataset.lat),
+      lng: Number(stage ? stage.dataset.lng : element.dataset.lng),
+      mindatId: stage ? stage.dataset.mindatId : element.dataset.mindatId,
+      mrds: stage ? stage.dataset.mrds : element.dataset.mrds,
     };
 
     if (!Number.isFinite(property.lat) || !Number.isFinite(property.lng)) return;
@@ -220,6 +221,7 @@
     L.control.scale({ metric: true, imperial: true, position: "bottomright" }).addTo(map);
     addCoordinateReadout(map, property);
     addFullscreenControl(map, element);
+    element.goldstoneLeafletMap = map;
 
     window.setTimeout(function () {
       map.invalidateSize();

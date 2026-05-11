@@ -5,6 +5,9 @@
 .map-block > h2 {
   padding: var(--s-5) var(--s-5) 0;
 }
+.map-block__stage {
+  position: relative;
+}
 .map-block__canvas,
 .map-block__missing {
   position: relative;
@@ -23,12 +26,52 @@
   outline: 2px solid var(--copper);
   outline-offset: 2px;
 }
+.map-block__canvas[hidden] {
+  display: none;
+}
 .map-block__canvas.is-fullscreen {
   width: 100vw !important;
   height: 100vh !important;
   min-height: 100vh;
   margin: 0;
   border: 0;
+}
+.map-mode-control {
+  display: inline-flex;
+  gap: 0;
+  margin: var(--s-4) var(--s-5) 0;
+  border: var(--hairline);
+  background: var(--paper-pure);
+}
+.map-mode-control__button {
+  min-height: 34px;
+  padding: var(--s-2) var(--s-3);
+  border: 0;
+  border-right: var(--hairline-soft);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  cursor: pointer;
+}
+.map-mode-control__button:last-child {
+  border-right: 0;
+}
+.map-mode-control__button:hover,
+.map-mode-control__button.is-active {
+  background: var(--bone);
+  color: var(--copper-deep);
+}
+.map-terrain-note {
+  margin: var(--s-3) var(--s-5) 0;
+  padding: var(--s-3);
+  border-top: var(--hairline-soft);
+  border-bottom: var(--hairline-soft);
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .map-fallback {
@@ -64,6 +107,36 @@
   font-family: var(--font-sans);
   color: var(--ink);
   background: var(--bone);
+}
+.maplibregl-map {
+  font-family: var(--font-sans);
+}
+.maplibregl-ctrl-group {
+  border: var(--hairline) !important;
+  border-radius: var(--r-1) !important;
+  box-shadow: none !important;
+  background: var(--paper-pure) !important;
+  overflow: hidden;
+}
+.maplibregl-ctrl-group button {
+  color: var(--ink) !important;
+}
+.map-3d-fly {
+  width: auto !important;
+  min-width: 116px;
+  padding: 0 var(--s-3) !important;
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+.map-3d-marker {
+  width: 34px;
+  height: 34px;
+}
+.map-3d-marker svg {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 1px 0 rgba(20, 17, 13, 0.28));
 }
 .leaflet-control-layers,
 .leaflet-bar,

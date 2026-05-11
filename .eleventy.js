@@ -1,3 +1,21 @@
+const fs = require("node:fs");
+const path = require("node:path");
+
+function loadLocalEnv() {
+  const envPath = path.join(__dirname, ".env");
+  if (!fs.existsSync(envPath)) return;
+
+  fs.readFileSync(envPath, "utf8")
+    .split(/\r?\n/)
+    .forEach((line) => {
+      const match = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+      if (!match || process.env[match[1]]) return;
+      process.env[match[1]] = match[2].replace(/^["']|["']$/g, "");
+    });
+}
+
+loadLocalEnv();
+
 const env = process.env.ELEVENTY_ENV || "development";
 const isProd = env === "production";
 
@@ -12,6 +30,7 @@ module.exports = function (eleventyConfig) {
   /* ── Global data ──────────────────────────────────────────────── */
   eleventyConfig.addGlobalData("env", env);
   eleventyConfig.addGlobalData("isProd", isProd);
+  eleventyConfig.addGlobalData("maptilerKey", process.env.MAPTILER_KEY || "");
 
   /* ── Dev-only page gate ───────────────────────────────────────── *
    * Set `devOnly: true` in a page's front matter to exclude it from

@@ -3,17 +3,35 @@
   <h2 id="map-title-{{ property.slug }}">Map</h2>
   {% if coords and coords.lat and coords.lng %}
   <div
-    class="map-block__canvas js-property-map"
-    id="map-{{ property.slug }}"
-    role="region"
-    aria-label="Interactive 2D map for {{ property.name }} at {{ coords.lat }}, {{ coords.lng }}"
-    tabindex="0"
+    class="map-block__stage js-map-stage"
     data-property-name="{{ property.name }}"
     data-lat="{{ coords.lat }}"
     data-lng="{{ coords.lng }}"
     data-mindat-id="{{ property.mindatId }}"
     data-mrds="{{ property.usgsMrds or '' }}"
-  ></div>
+    data-maptiler-key="{{ maptilerKey }}"
+  >
+    <div class="map-mode-control" role="group" aria-label="Map view mode">
+      <button type="button" class="map-mode-control__button is-active js-map-2d-toggle" aria-pressed="true">2D Map</button>
+      <button type="button" class="map-mode-control__button js-map-3d-toggle" aria-pressed="false">3D Terrain</button>
+    </div>
+    <div
+      class="map-block__canvas js-property-map"
+      id="map-{{ property.slug }}"
+      role="region"
+      aria-label="Interactive 2D map for {{ property.name }} at {{ coords.lat }}, {{ coords.lng }}"
+      tabindex="0"
+    ></div>
+    <div
+      class="map-block__canvas map-block__canvas--3d js-property-map-3d"
+      id="map-{{ property.slug }}-3d"
+      role="region"
+      aria-label="Optional 3D terrain map for {{ property.name }} at {{ coords.lat }}, {{ coords.lng }}"
+      tabindex="0"
+      hidden
+    ></div>
+    <p id="map-terrain-note-{{ property.slug }}" class="map-terrain-note js-map-terrain-note" tabindex="-1" aria-live="polite" hidden>3D terrain requires a MapTiler key. The 2D map remains available.</p>
+  </div>
   {% else %}
   <div class="map-block__missing">
     <span class="mono">Map coordinates pending</span>

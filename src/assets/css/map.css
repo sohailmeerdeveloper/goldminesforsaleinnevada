@@ -1,0 +1,196 @@
+.map-block {
+  padding: 0;
+  overflow: hidden;
+}
+.map-block > h2 {
+  padding: var(--s-5) var(--s-5) 0;
+}
+.map-block__canvas,
+.map-block__missing {
+  position: relative;
+  min-height: 360px;
+  margin: var(--s-4) var(--s-5) 0;
+  border: var(--hairline);
+  background: var(--bone);
+  z-index: 0;
+}
+.map-block__missing {
+  display: grid;
+  place-items: center;
+  color: var(--ink-faint);
+}
+.map-block__canvas:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
+}
+.map-block__canvas.is-fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  min-height: 100vh;
+  margin: 0;
+  border: 0;
+}
+
+.map-fallback {
+  width: calc(100% - (var(--s-5) * 2));
+  margin: var(--s-5);
+  font-size: var(--fs-xs);
+  border-top: var(--hairline-soft);
+}
+.map-fallback caption {
+  padding: var(--s-3) 0;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tr-label);
+  color: var(--ink-soft);
+}
+.map-fallback th,
+.map-fallback td {
+  padding: var(--s-2) 0;
+  border-top: var(--hairline-soft);
+  text-align: left;
+  vertical-align: top;
+}
+.map-fallback th {
+  width: 42%;
+  color: var(--ink-faint);
+  font-weight: 600;
+}
+
+.leaflet-container {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--bone);
+}
+.leaflet-control-layers,
+.leaflet-bar,
+.map-readout {
+  border: var(--hairline) !important;
+  border-radius: var(--r-1) !important;
+  box-shadow: none !important;
+}
+.leaflet-control-layers {
+  color: var(--ink);
+  background: var(--paper-pure);
+  font-size: var(--fs-xs);
+}
+.leaflet-control-layers-toggle {
+  background-color: var(--paper-pure);
+}
+.leaflet-control-layers-expanded {
+  padding: var(--s-3);
+}
+.leaflet-control-layers label {
+  display: block;
+  padding-block: 2px;
+}
+.leaflet-bar a,
+.map-fullscreen {
+  display: grid !important;
+  place-items: center;
+  width: 34px !important;
+  height: 34px !important;
+  border-bottom: var(--hairline-soft) !important;
+  background: var(--paper-pure) !important;
+  color: var(--ink) !important;
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+.leaflet-bar a:hover,
+.map-fullscreen:hover {
+  background: var(--bone) !important;
+  color: var(--copper-deep) !important;
+}
+.map-fullscreen {
+  border: 0;
+  cursor: pointer;
+}
+.map-readout {
+  padding: var(--s-2) var(--s-3);
+  background: var(--paper-pure);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-variant-numeric: lining-nums tabular-nums;
+  min-width: 22ch;
+}
+.leaflet-control-scale-line {
+  border-color: var(--rule) !important;
+  color: var(--ink) !important;
+  background: rgba(250, 247, 241, 0.86) !important;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.survey-marker {
+  width: 34px;
+  height: 34px;
+}
+.survey-marker svg {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 1px 0 rgba(20, 17, 13, 0.28));
+}
+.map-popup h3 {
+  margin: 0 0 var(--s-2);
+  font-family: var(--font-serif);
+  font-size: var(--fs-md);
+  line-height: var(--lh-snug);
+}
+.map-popup p {
+  margin: var(--s-1) 0;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-data);
+}
+.map-popup__actions {
+  display: grid;
+  gap: var(--s-2);
+  margin-top: var(--s-3);
+}
+.map-popup button,
+.map-popup a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 34px;
+  padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--r-1);
+  background: var(--paper-pure);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.map-popup button:hover,
+.map-popup a:hover {
+  border-color: var(--copper);
+  color: var(--copper-deep);
+}
+
+@media (max-width: 760px) {
+  .map-block__canvas,
+  .map-block__missing {
+    min-height: 320px;
+  }
+  .leaflet-control-layers-expanded {
+    max-width: calc(100vw - 48px);
+    max-height: 48vh;
+    overflow: auto;
+  }
+}
+
+@media print {
+  .map-block__canvas {
+    display: none;
+  }
+  .map-block {
+    break-inside: avoid;
+  }
+}

@@ -1,0 +1,54 @@
+{% set coords = property.coordinates.decimal %}
+<section class="map-block sidebar-card" aria-labelledby="map-title-{{ property.slug }}">
+  <h2 id="map-title-{{ property.slug }}">Map</h2>
+  {% if coords and coords.lat and coords.lng %}
+  <div
+    class="map-block__canvas js-property-map"
+    id="map-{{ property.slug }}"
+    role="region"
+    aria-label="Interactive 2D map for {{ property.name }} at {{ coords.lat }}, {{ coords.lng }}"
+    tabindex="0"
+    data-property-name="{{ property.name }}"
+    data-lat="{{ coords.lat }}"
+    data-lng="{{ coords.lng }}"
+    data-mindat-id="{{ property.mindatId }}"
+    data-mrds="{{ property.usgsMrds or '' }}"
+  ></div>
+  {% else %}
+  <div class="map-block__missing">
+    <span class="mono">Map coordinates pending</span>
+  </div>
+  {% endif %}
+
+  <table class="map-fallback">
+    <caption>View as data table</caption>
+    <tbody>
+      <tr>
+        <th scope="row">Property</th>
+        <td>{{ property.name }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Latitude</th>
+        <td class="mono numerals-data">{{ coords.lat or "TBD" }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Longitude</th>
+        <td class="mono numerals-data">{{ coords.lng or "TBD" }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Coordinate system</th>
+        <td>WGS 84</td>
+      </tr>
+      <tr>
+        <th scope="row">Mindat ID</th>
+        <td class="mono numerals-data">{{ property.mindatId }}</td>
+      </tr>
+      {% if property.usgsMrds %}
+      <tr>
+        <th scope="row">MRDS record</th>
+        <td class="mono numerals-data">{{ property.usgsMrds }}</td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</section>

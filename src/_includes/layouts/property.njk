@@ -166,22 +166,7 @@ layout: layouts/base.njk
       </div>
 
       <aside class="property-sidebar sticky-sidebar" aria-label="Property actions and sources">
-        <section class="sidebar-card map-placeholder" aria-labelledby="map-placeholder-title">
-          <h2 id="map-placeholder-title">Map</h2>
-          <div class="map-placeholder__box">
-            <span class="mono">Interactive map &mdash; Step 6</span>
-          </div>
-          <dl class="sidebar-data">
-            <div>
-              <dt>WGS-84</dt>
-              <dd class="mono numerals-data">{{ property.coordinates.decimal.lat }}, {{ property.coordinates.decimal.lng }}</dd>
-            </div>
-            <div>
-              <dt>DMS</dt>
-              <dd class="mono numerals-data">{{ property.coordinates.dms }}</dd>
-            </div>
-          </dl>
-        </section>
+        {% include "partials/map-block.njk" %}
 
         <section class="sidebar-card" aria-labelledby="packet-title">
           <h2 id="packet-title">Request Property Packet</h2>

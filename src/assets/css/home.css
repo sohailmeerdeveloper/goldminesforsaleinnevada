@@ -220,6 +220,24 @@
   text-align: center;
   padding: var(--s-5);
 }
+
+/* Map preview variant: replaces the photo placeholder with a Leaflet
+   thumbnail until real client imagery arrives. Suppresses the dashed
+   inner border so the tiles read cleanly. */
+.property-card__media--map { padding: 0; background: var(--bone); }
+.property-card__media--map::before { content: none; }
+.property-card__media--map .leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: var(--bone);
+}
+.property-card__map--unavailable {
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-faint);
+}
 .property-card__media-note strong {
   display: block;
   font-weight: 600;
@@ -322,32 +340,8 @@
   color: var(--ink-faint);
 }
 
-.source-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-top: var(--hairline);
-}
-.source-list li { border-bottom: var(--hairline-soft); padding: var(--s-3) 0; }
-.source-list a {
-  display: block;
-  text-decoration: none;
-  color: var(--ink);
-}
-.source-list a:hover { color: var(--copper-deep); }
-.source-list .src__title {
-  font-family: var(--font-serif);
-  font-size: var(--fs-md);
-  font-weight: 600;
-  line-height: 1.2;
-}
-.source-list .src__desc {
-  display: block;
-  margin-top: 2px;
-  font-size: var(--fs-xs);
-  color: var(--ink-faint);
-  line-height: 1.4;
-}
+/* .source-list now lives in components.css so due-diligence and
+   nevada-mining (which don't load home.css) render it correctly too. */
 
 /* ── Principal mini-section ─────────────────────────────────────── */
 .principal {
@@ -428,7 +422,7 @@
 .contact-band h2 {
   font-size: var(--fs-2xl);
   color: var(--paper-pure);
-  max-width: 16ch;
+  max-width: 22ch;
 }
 .contact-band .lede { color: var(--on-bg); margin-top: var(--s-4); max-width: 44ch; }
 
@@ -456,12 +450,13 @@
 .contact-channels a { color: var(--on-bg); text-decoration: none; }
 .contact-channels a:hover { color: var(--copper-bright); }
 
-/* Inline form */
+/* CTA sits below the lede on the left, separated by a hairline that
+   echoes the rule above the right-hand contact list, so both columns
+   read as equal-weight blocks. */
 .contact-band__cta {
-  align-self: center;
+  margin-top: var(--s-6);
+  padding-top: var(--s-6);
   border-top: 1px solid var(--bg-rule);
-  border-bottom: 1px solid var(--bg-rule);
-  padding-block: var(--s-6);
 }
 .contact-band__cta p {
   color: var(--on-bg);

@@ -94,8 +94,34 @@
 
   {#- Per-page structured data injected by child templates -#}
   {% block schema %}{% endblock %}
+
+  {#- Preloader gate: runs before body parses so first-paint either shows
+      the preloader or skips it without a flash. Skips for one hour after
+      the most recent display per visitor (localStorage). -#}
+  <script>
+    (function(){
+      try {
+        var ts = Number(window.localStorage.getItem("goldstone_preloader_ts")) || 0;
+        if (ts && (Date.now() - ts) < 3600000) {
+          document.documentElement.classList.add("preloader-skip");
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
+  {#- Preloader overlay (2s, once per hour). -#}
+  <div class="preloader" id="preloader" role="status" aria-label="Loading Goldstone LLC">
+    <div class="preloader__inner">
+      <svg class="preloader__mark" width="96" height="58" viewBox="0 0 56 34" aria-hidden="true">
+        <path d="M2 27 L20 6 L36 27" fill="none" stroke="var(--copper)" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter" />
+        <path d="M20 27 L36 9 L54 27" fill="none" stroke="var(--copper)" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter" />
+      </svg>
+      <span class="preloader__wordmark">Goldstone LLC</span>
+      <span class="preloader__strapline">Since 1989</span>
+    </div>
+  </div>
+
   {#- Skip link (a11y) -#}
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
@@ -113,5 +139,28 @@
   {% if extra_js %}{% for src in extra_js %}
   <script src="{{ src }}" defer></script>
   {% endfor %}{% endif %}
+
+  {#- Preloader controller: holds for 2s on first display, fades out, and
+      stamps localStorage so the next hour of page loads skip it. -#}
+  <script>
+    (function(){
+      var pre = document.getElementById("preloader");
+      if (!pre) return;
+      if (document.documentElement.classList.contains("preloader-skip")) {
+        if (pre.parentNode) pre.parentNode.removeChild(pre);
+        return;
+      }
+      var html = document.documentElement;
+      html.style.overflow = "hidden";
+      window.setTimeout(function () {
+        pre.classList.add("is-hiding");
+        try { window.localStorage.setItem("goldstone_preloader_ts", String(Date.now())); } catch (e) {}
+        html.style.overflow = "";
+        window.setTimeout(function () {
+          if (pre.parentNode) pre.parentNode.removeChild(pre);
+        }, 600);
+      }, 2000);
+    })();
+  </script>
 </body>
 </html>

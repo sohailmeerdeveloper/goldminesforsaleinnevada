@@ -84,6 +84,34 @@
   font-variant-numeric: lining-nums tabular-nums;
 }
 
+/* 3D Aerial pane: holds the Google Maps satellite-hybrid iframe plus a
+   companion "Open in Google Earth" link for real 3D in a new tab. */
+.map-block__canvas--3d {
+  display: flex;
+  flex-direction: column;
+}
+.map-block__canvas--3d iframe {
+  flex: 1 1 auto;
+  min-height: 320px;
+}
+.map-3d-actions {
+  border-top: var(--hairline-soft);
+  background: var(--paper-pure);
+  padding: var(--s-2) var(--s-3);
+  text-align: right;
+}
+.map-3d-actions__link {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--copper-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+.map-3d-actions__link:hover {
+  color: var(--copper);
+}
+
 .map-fallback {
   width: calc(100% - (var(--s-5) * 2));
   margin: var(--s-5);

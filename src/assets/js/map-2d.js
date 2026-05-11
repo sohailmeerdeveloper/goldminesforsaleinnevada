@@ -207,6 +207,11 @@
       keyboard: true,
     });
 
+    var dark = L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+      maxZoom: 20,
+      attribution: '&copy; OpenStreetMap contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: "abcd",
+    });
     var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -219,7 +224,7 @@
       maxZoom: 17,
       attribution: 'Map data &copy; OpenStreetMap, SRTM | Map style &copy; <a href="https://opentopomap.org">OpenTopoMap</a>',
     });
-    var bw = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png", {
+    var light = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png", {
       maxZoom: 20,
       attribution: '&copy; OpenStreetMap contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     });
@@ -255,7 +260,8 @@
       "Standard 2D": osm,
       "Satellite": satellite,
       "Topographic": topo,
-      "Black & White": bw,
+      "Black & White": light,
+      "Dark": dark,
       "Hybrid": hybrid,
     }, null, {
       position: "topright",
@@ -299,12 +305,17 @@
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         observer.unobserve(entry.target);
-        initMaps([entry.target]);
+        // The 2D canvas itself may start hidden (3D is the default tab),
+        // so initialize the inner map element; Leaflet will size correctly
+        // once the user reveals it and the toggle script calls invalidateSize.
+        var inner = entry.target.querySelector(".js-property-map") || entry.target;
+        initMaps([inner]);
       });
     }, { rootMargin: "320px 0px" });
 
     mapElements.forEach(function (element) {
-      observer.observe(element);
+      var stage = element.closest(".js-map-stage") || element;
+      observer.observe(stage);
     });
   } else {
     initMaps(mapElements);

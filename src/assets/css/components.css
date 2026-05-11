@@ -76,12 +76,26 @@
 /* ── Mobile nav toggle ───────────────────────────────────────────── */
 .nav-toggle {
   display: none;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   align-items: center;
   justify-content: center;
+  border: var(--hairline);
+  background: var(--paper-pure);
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: var(--r-1);
 }
-.nav-toggle svg { width: 24px; height: 24px; }
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
+}
+.nav-toggle__icon,
+.nav-toggle svg {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
 
 @media (max-width: 768px) {
   .nav-toggle { display: flex; }
@@ -91,14 +105,17 @@
     top: 100%;
     left: 0;
     right: 0;
+    z-index: 30;
     flex-direction: column;
-    background: var(--paper);
+    align-items: stretch;
+    background: var(--paper-pure);
     border-bottom: var(--hairline);
     padding: var(--s-5) var(--gutter);
     gap: var(--s-4);
   }
   .nav-primary.is-open { display: flex; }
-  .site-header { position: relative; }
+  .nav-primary a { padding: var(--s-2) 0; }
+  .site-header { position: relative; z-index: 20; }
 }
 
 /* ── Site footer ─────────────────────────────────────────────────── */
@@ -145,4 +162,82 @@
   margin-top: var(--s-4);
   font-size: var(--fs-xs);
   color: var(--on-bg-soft);
+}
+
+/* ── Source list (Why Nevada sidebar, due-diligence, nevada-mining) ── */
+.source-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: var(--hairline);
+}
+.source-list li { border-bottom: var(--hairline-soft); padding: var(--s-3) 0; }
+.source-list a {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+}
+.source-list a:hover { color: var(--copper-deep); }
+.source-list .src__title {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.source-list .src__desc {
+  display: block;
+  margin-top: 4px;
+  font-size: var(--fs-xs);
+  color: var(--ink-faint);
+  line-height: 1.4;
+}
+
+/* ── Preloader (2s logo intro, throttled to once per hour) ── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.preloader-skip .preloader { display: none; }
+.preloader.is-hiding { opacity: 0; pointer-events: none; }
+.preloader__inner {
+  text-align: center;
+  animation: preloaderRise 0.6s ease both;
+}
+.preloader__mark {
+  display: block;
+  margin: 0 auto var(--s-4);
+}
+.preloader__wordmark {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-md);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--paper-pure);
+}
+.preloader__strapline {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tr-smallcaps);
+  text-transform: uppercase;
+  color: var(--on-bg-soft);
+}
+@keyframes preloaderRise {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preloader { transition: none; }
+  .preloader__inner { animation: none; }
 }

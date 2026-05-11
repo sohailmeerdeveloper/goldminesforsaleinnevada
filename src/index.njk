@@ -6,6 +6,8 @@ meta_description: "Goldstone LLC offers two patented mining properties in Eureka
 og_type: website
 extra_css:
   - /assets/css/home.css
+extra_js:
+  - /assets/js/home-maps.js
 ---
 
 {# ── Hero ────────────────────────────────────────────────────────── #}
@@ -73,14 +75,16 @@ extra_css:
     {% set lynn = properties.items[0] %}
     {% set adelaide = properties.items[1] %}
 
-    {# Property 1 — Lynn Creek (image left) #}
+    {# Property 1 — Lynn Creek (map left, will be replaced by client photo later) #}
     <article class="property-card-large">
-      <div class="property-card__media" role="img" aria-label="Lynn Creek Placers site photo placeholder">
-        <div class="property-card__media-note">
-          <strong>[CLIENT PHOTO &mdash; TBD]</strong>
-          Lynn Creek Placers, Eureka County
-        </div>
-      </div>
+      <div
+        class="property-card__media property-card__media--map js-home-map"
+        role="img"
+        aria-label="Map preview of Lynn Creek Placers at {{ lynn.coordinates.decimal.lat }}, {{ lynn.coordinates.decimal.lng }}"
+        data-lat="{{ lynn.coordinates.decimal.lat }}"
+        data-lng="{{ lynn.coordinates.decimal.lng }}"
+        data-name="{{ lynn.name }}"
+      ></div>
       <div class="property-card__body">
         <h3 class="property-card__name">{{ lynn.name }}</h3>
         <p class="property-card__locality">
@@ -103,14 +107,16 @@ extra_css:
       </div>
     </article>
 
-    {# Property 2 — Adelaide (image right) #}
+    {# Property 2 — Adelaide (map right, will be replaced by client photo later) #}
     <article class="property-card-large property-card-large--reverse">
-      <div class="property-card__media" role="img" aria-label="Adelaide Mine site photo placeholder">
-        <div class="property-card__media-note">
-          <strong>[CLIENT PHOTO &mdash; TBD]</strong>
-          Adelaide Mine, Humboldt County
-        </div>
-      </div>
+      <div
+        class="property-card__media property-card__media--map js-home-map"
+        role="img"
+        aria-label="Map preview of Adelaide Mine at {{ adelaide.coordinates.decimal.lat }}, {{ adelaide.coordinates.decimal.lng }}"
+        data-lat="{{ adelaide.coordinates.decimal.lat }}"
+        data-lng="{{ adelaide.coordinates.decimal.lng }}"
+        data-name="{{ adelaide.name }}"
+      ></div>
       <div class="property-card__body">
         <h3 class="property-card__name">{{ adelaide.name }}</h3>
         <p class="property-card__locality">
@@ -225,8 +231,15 @@ extra_css:
     <div>
       <span class="eyebrow">Request a property packet</span>
       <h2 id="contact-h2" style="margin-top: var(--s-3)">Inquiries reviewed by Dennis Blancey directly.</h2>
-      <p class="lede">For full property files, technical reports, and on-site visit coordination, contact Goldstone LLC at any of the offices below.</p>
+      <p class="lede">For full property files, technical reports, and on-site visit coordination, contact Goldstone LLC at any of the offices listed to the right.</p>
 
+      <div class="contact-band__cta">
+        <p>Use the full inquiry form to request a property packet for Lynn Creek Placers, Adelaide Mine, or both current listings.</p>
+        <a class="btn btn--primary" href="/contact/#inquiry">Open inquiry form <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+
+    <div>
       <ul class="contact-channels">
         <li><span class="channel__label">Phone</span><a href="tel:{{ site.contact.phonesTel[0] }}">{{ site.contact.phones[0] }}</a></li>
         <li><span class="channel__label">Phone</span><a href="tel:{{ site.contact.phonesTel[1] }}">{{ site.contact.phones[1] }}</a></li>
@@ -235,11 +248,6 @@ extra_css:
         <li><span class="channel__label">Office</span><span>{{ office.city }}, {{ office.state }} {{ office.postal }}</span></li>
         {% endfor %}
       </ul>
-    </div>
-
-    <div class="contact-band__cta">
-      <p>Use the full inquiry form to request a property packet for Lynn Creek Placers, Adelaide Mine, or both current listings.</p>
-      <a class="btn btn--primary" href="/contact/#inquiry">Open inquiry form <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
 </section>

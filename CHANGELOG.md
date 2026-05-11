@@ -74,3 +74,9 @@
 - Added property page print styles for letter-size fact sheets.
 - Improved mobile map layer control usability.
 - Verified Lighthouse, headings, JSON-LD, local links, sitemap, robots, form markup, mobile overflow, map behavior, and print output.
+
+### Documentation and Launch Handoff
+
+- Added the project README covering local setup, scripts, environment variables, editing site and property data, replacing photos, Netlify Forms, MapTiler key, deployment, and the launch QA checklist.
+- Added this changelog covering the initial build through launch handoff.
+- Recorded known limitations and follow-up items for the client review.

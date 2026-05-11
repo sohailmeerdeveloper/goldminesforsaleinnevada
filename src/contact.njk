@@ -69,8 +69,9 @@ extra_css:
           </div>
 
           <div class="field field--full">
-            <label for="property-interest">Property of interest</label>
-            <select id="property-interest" name="property-interest">
+            <label for="property-interest">Property of interest <span class="required-text">(required)</span></label>
+            <select id="property-interest" name="property-interest" required>
+              <option value="" disabled selected>Select a property</option>
               <option value="Lynn Creek Placers">Lynn Creek Placers</option>
               <option value="Adelaide Mine">Adelaide Mine</option>
               <option value="Both properties">Both properties</option>

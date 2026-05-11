@@ -4,7 +4,8 @@
   "private": true,
   "description": "Marketing website for Goldstone LLC — Nevada gold, copper and silver mining properties.",
   "scripts": {
-    "build": "eleventy",
+    "build": "node scripts/build.js",
+    "build:dev": "eleventy",
     "start": "eleventy --serve --quiet",
     "watch": "eleventy --watch",
     "debug": "DEBUG=Eleventy* eleventy",

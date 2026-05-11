@@ -31,10 +31,16 @@ Install dependencies:
 npm install
 ```
 
-Run a production build:
+Run a production build (sets `ELEVENTY_ENV=production` automatically and is cross-platform):
 
 ```bash
 npm run build
+```
+
+Run a development build (includes dev-only pages such as `/type-specimen/`):
+
+```bash
+npm run build:dev
 ```
 
 Run a local development server:
@@ -43,7 +49,7 @@ Run a local development server:
 npm start
 ```
 
-Run an explicit production Eleventy build:
+If you prefer to invoke Eleventy directly, the equivalent production command is:
 
 ```bash
 ELEVENTY_ENV=production npx @11ty/eleventy

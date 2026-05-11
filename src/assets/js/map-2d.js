@@ -1,10 +1,48 @@
 (function () {
   "use strict";
 
-  if (!window.L) return;
+  var leafletCss = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+  var leafletScript = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+  var leafletPromise = null;
 
   var copper = getComputedStyle(document.documentElement).getPropertyValue("--copper").trim() || "#a8472b";
   var copperDeep = getComputedStyle(document.documentElement).getPropertyValue("--copper-deep").trim() || "#7a2f1a";
+
+  function loadCssOnce(href) {
+    if (document.querySelector('link[href="' + href + '"]')) return;
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    document.head.appendChild(link);
+  }
+
+  function loadScriptOnce(src) {
+    if (window.L) return Promise.resolve();
+    if (leafletPromise) return leafletPromise;
+
+    leafletPromise = new Promise(function (resolve, reject) {
+      var existing = document.querySelector('script[src="' + src + '"]');
+      if (existing) {
+        existing.addEventListener("load", resolve, { once: true });
+        existing.addEventListener("error", reject, { once: true });
+        return;
+      }
+
+      var script = document.createElement("script");
+      script.src = src;
+      script.defer = true;
+      script.addEventListener("load", resolve, { once: true });
+      script.addEventListener("error", reject, { once: true });
+      document.head.appendChild(script);
+    });
+
+    return leafletPromise;
+  }
+
+  function loadLeaflet() {
+    loadCssOnce(leafletCss);
+    return loadScriptOnce(leafletScript);
+  }
 
   function fixedCoord(value) {
     return Number(value).toFixed(5);
@@ -45,24 +83,28 @@
       }, 1600);
     }
 
+    function legacyCopy() {
+      var textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "absolute";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        done();
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done).catch(function () {});
+      navigator.clipboard.writeText(text).then(done).catch(legacyCopy);
       return;
     }
 
-    var textarea = document.createElement("textarea");
-    textarea.value = text;
-    textarea.setAttribute("readonly", "");
-    textarea.style.position = "absolute";
-    textarea.style.left = "-9999px";
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-      document.execCommand("copy");
-      done();
-    } finally {
-      document.body.removeChild(textarea);
-    }
+    legacyCopy();
   }
 
   function buildPopup(property) {
@@ -119,10 +161,14 @@
         button.textContent = "FS";
         L.DomEvent.disableClickPropagation(wrapper);
         L.DomEvent.on(button, "click", function () {
+          var action;
           if (document.fullscreenElement) {
-            document.exitFullscreen();
+            action = document.exitFullscreen();
           } else if (element.requestFullscreen) {
-            element.requestFullscreen();
+            action = element.requestFullscreen();
+          }
+          if (action && action.catch) {
+            action.catch(function () {});
           }
         });
         return wrapper;
@@ -140,6 +186,8 @@
   }
 
   function initMap(element) {
+    if (!window.L || element.goldstoneLeafletMap) return;
+
     var stage = element.closest(".js-map-stage");
     var property = {
       name: stage ? stage.dataset.propertyName : element.dataset.propertyName,
@@ -228,5 +276,37 @@
     }, 100);
   }
 
-  document.querySelectorAll(".js-property-map").forEach(initMap);
+  function markUnavailable(elements) {
+    elements.forEach(function (element) {
+      element.classList.add("map-block__canvas--unavailable");
+      element.textContent = "2D map could not load. Coordinate data remains available below.";
+    });
+  }
+
+  function initMaps(elements) {
+    loadLeaflet().then(function () {
+      elements.forEach(initMap);
+    }).catch(function () {
+      markUnavailable(elements);
+    });
+  }
+
+  var mapElements = Array.prototype.slice.call(document.querySelectorAll(".js-property-map"));
+  if (!mapElements.length) return;
+
+  if ("IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        initMaps([entry.target]);
+      });
+    }, { rootMargin: "320px 0px" });
+
+    mapElements.forEach(function (element) {
+      observer.observe(element);
+    });
+  } else {
+    initMaps(mapElements);
+  }
 })();

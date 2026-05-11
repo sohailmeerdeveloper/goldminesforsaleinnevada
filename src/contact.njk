@@ -37,17 +37,17 @@ meta_description: "Contact Dennis Blancey directly about Lynn Creek Placers, Ade
         </dl>
       </aside>
 
-      <section class="inquiry-panel" aria-labelledby="inquiry-title">
+      <section class="inquiry-panel" id="inquiry" aria-labelledby="inquiry-title">
         <p class="eyebrow">Property packet</p>
         <h2 id="inquiry-title">Request Property Packet</h2>
         <form class="inquiry-form" name="inquiry" method="POST" action="/contact/thank-you/" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="inquiry">
-          <p class="form-honeypot">
+          <p class="form-honeypot" aria-hidden="true">
             <label>Do not fill this out if you are human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
           </p>
 
           <div class="field">
-            <label for="name">Name <span aria-hidden="true">*</span></label>
+            <label for="name">Name <span class="required-text">(required)</span></label>
             <input id="name" name="name" type="text" autocomplete="name" required>
           </div>
 
@@ -57,7 +57,7 @@ meta_description: "Contact Dennis Blancey directly about Lynn Creek Placers, Ade
           </div>
 
           <div class="field">
-            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <label for="email">Email <span class="required-text">(required)</span></label>
             <input id="email" name="email" type="email" autocomplete="email" required>
           </div>
 
@@ -77,14 +77,14 @@ meta_description: "Contact Dennis Blancey directly about Lynn Creek Placers, Ade
           </div>
 
           <div class="field field--full">
-            <label for="message">Message <span aria-hidden="true">*</span></label>
+            <label for="message">Message <span class="required-text">(required)</span></label>
             <textarea id="message" name="message" rows="7" required></textarea>
           </div>
 
           <button class="btn btn--primary" type="submit">Request property packet</button>
         </form>
 
-        <p class="due-note">Prospective buyers should conduct independent due diligence including title verification, mineral rights review, and on-site inspection.</p>
+        <p class="due-note">Inquiries are reviewed by Dennis Blancey directly. Goldstone LLC does not provide investment advice. Prospective buyers should conduct independent due diligence including title verification, mineral rights review, and on-site inspection.</p>
       </section>
     </div>
   </section>

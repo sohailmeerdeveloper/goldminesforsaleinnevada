@@ -457,48 +457,16 @@
 .contact-channels a:hover { color: var(--copper-bright); }
 
 /* Inline form */
-.inquiry-inline {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--s-4);
+.contact-band__cta {
+  align-self: center;
+  border-top: 1px solid var(--bg-rule);
+  border-bottom: 1px solid var(--bg-rule);
+  padding-block: var(--s-6);
 }
-.inquiry-inline .field { display: flex; flex-direction: column; gap: var(--s-2); }
-.inquiry-inline .field--full { grid-column: 1 / -1; }
-.inquiry-inline label {
-  font-family: var(--font-sans);
-  font-size: var(--fs-xs);
-  font-variant-caps: all-small-caps;
-  letter-spacing: var(--tr-smallcaps);
-  color: var(--on-bg-soft);
+.contact-band__cta p {
+  color: var(--on-bg);
+  max-width: 48ch;
 }
-.inquiry-inline input,
-.inquiry-inline textarea {
-  background: transparent;
-  border: 1px solid var(--bg-rule);
-  color: var(--paper-pure);
-  padding: var(--s-3);
-  font-family: var(--font-sans);
-  font-size: var(--fs-sm);
-  border-radius: var(--r-1);
-  transition: border-color var(--dur) var(--ease);
+.contact-band__cta .btn {
+  margin-top: var(--s-5);
 }
-.inquiry-inline input:focus,
-.inquiry-inline textarea:focus {
-  outline: none;
-  border-color: var(--copper-bright);
-}
-.inquiry-inline textarea { min-height: 110px; resize: vertical; }
-.inquiry-inline .actions {
-  grid-column: 1 / -1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-4);
-  margin-top: var(--s-2);
-  flex-wrap: wrap;
-}
-.inquiry-inline .actions__note {
-  font-size: var(--fs-xs);
-  color: var(--on-bg-soft);
-}
-@media (max-width: 600px) { .inquiry-inline { grid-template-columns: 1fr; } }

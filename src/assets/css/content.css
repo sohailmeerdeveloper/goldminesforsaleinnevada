@@ -187,7 +187,11 @@
   gap: var(--s-4);
 }
 .form-honeypot {
-  display: none;
+  position: absolute;
+  left: -100vw;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 .field {
   display: flex;
@@ -203,6 +207,10 @@
   font-variant-caps: all-small-caps;
   letter-spacing: var(--tr-smallcaps);
   color: var(--ink-soft);
+}
+.required-text {
+  color: var(--ink-faint);
+  font-weight: 500;
 }
 .field input,
 .field select,
@@ -228,6 +236,40 @@
   color: var(--ink-soft);
   font-size: var(--fs-sm);
   line-height: var(--lh-data);
+}
+.thank-you-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: var(--hairline);
+}
+.thank-you-contact li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-block: var(--s-3);
+  border-bottom: var(--hairline-soft);
+}
+.thank-you-contact span {
+  font-size: var(--fs-xs);
+  font-variant-caps: all-small-caps;
+  letter-spacing: var(--tr-smallcaps);
+  color: var(--ink-faint);
+}
+.thank-you-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+}
+.btn--paper {
+  color: var(--ink);
+  border-color: var(--rule-soft);
+}
+.btn--paper:hover {
+  color: var(--copper-deep);
+  border-color: var(--copper);
+  background: var(--bone);
 }
 
 @media (max-width: 1024px) {

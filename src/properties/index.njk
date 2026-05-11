@@ -1,11 +1,192 @@
 ---
-layout: layouts/page.njk
-title: Nevada Mining Properties for Sale
+layout: layouts/base.njk
+title: Nevada Mining Properties
 meta_title: Nevada Mining Properties for Sale
-meta_description: "Portfolio index for Goldstone LLC Nevada mining properties in Eureka and Humboldt Counties."
+meta_description: "Goldstone LLC listing page for documented Nevada mining properties in Eureka and Humboldt Counties with USGS MRDS and Mindat references."
+extra_js:
+  - /assets/js/property-filters.js
 ---
-<section class="section wrap wrap--narrow">
-  <p class="eyebrow">Property Files</p>
-  <h1 style="margin-top: var(--s-3)">Nevada Mining Properties for Sale</h1>
-  <p class="lede" style="margin-top: var(--s-5);">Step 9 replaces this placeholder with the filterable property index.</p>
-</section>
+{% set items = properties.items %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Nevada Mining Properties",
+  "url": "{{ site.url }}{{ page.url }}",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {% for property in items %}
+      {
+        "@type": "ListItem",
+        "position": {{ loop.index }},
+        "url": "{{ site.url }}/properties/{{ property.slug }}/",
+        "name": "{{ property.name }}"
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<article class="properties-index">
+  <header class="content-hero on-bg">
+    <div class="content-hero__inner">
+      <p class="eyebrow">Nevada Mining Properties</p>
+      <h1>Gold, copper, and silver mining properties in Nevada</h1>
+      <p class="content-hero__lede">Goldstone LLC lists documented Nevada mining properties with public geological database references from USGS MRDS, Mindat, and related source records.</p>
+    </div>
+  </header>
+
+  <section class="portfolio-strip" aria-label="Portfolio summary">
+    <div class="portfolio-strip__inner">
+      <div class="portfolio-strip__cell">
+        <span class="portfolio-strip__value mono numerals-data">02</span>
+        <span class="portfolio-strip__label">Properties</span>
+      </div>
+      <div class="portfolio-strip__cell">
+        <span class="portfolio-strip__value mono numerals-data">02</span>
+        <span class="portfolio-strip__label">Counties</span>
+      </div>
+      <div class="portfolio-strip__cell">
+        <span class="portfolio-strip__value mono numerals-data">Au &middot; Ag &middot; Cu &middot; Pb &middot; Zn &middot; W</span>
+        <span class="portfolio-strip__label">Commodities</span>
+      </div>
+      <div class="portfolio-strip__cell">
+        <span class="portfolio-strip__value mono numerals-data">USGS / Mindat</span>
+        <span class="portfolio-strip__label">Documented</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="properties-listing" aria-labelledby="property-results-title">
+    <div class="properties-listing__grid">
+      <aside class="filter-panel" aria-labelledby="filter-title">
+        <div class="filter-panel__head">
+          <h2 id="filter-title">Filter Properties</h2>
+          <button class="filter-clear js-filter-clear" type="button">Clear filters</button>
+        </div>
+
+        <fieldset class="filter-group">
+          <legend>Commodity</legend>
+          <label><input type="checkbox" name="commodity" value="au"> <span>Gold / Au</span></label>
+          <label><input type="checkbox" name="commodity" value="cu"> <span>Copper / Cu</span></label>
+          <label><input type="checkbox" name="commodity" value="ag"> <span>Silver / Ag</span></label>
+          <label><input type="checkbox" name="commodity" value="pb"> <span>Lead / Pb</span></label>
+          <label><input type="checkbox" name="commodity" value="zn"> <span>Zinc / Zn</span></label>
+          <label><input type="checkbox" name="commodity" value="w"> <span>Tungsten / W</span></label>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>County</legend>
+          <label><input type="checkbox" name="county" value="eureka county"> <span>Eureka County</span></label>
+          <label><input type="checkbox" name="county" value="humboldt county"> <span>Humboldt County</span></label>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>Deposit Type</legend>
+          <label><input type="checkbox" name="deposit" value="placer au-pge"> <span>Placer Au-PGE</span></label>
+          <label><input type="checkbox" name="deposit" value="skarn cu"> <span>Skarn Cu</span></label>
+        </fieldset>
+      </aside>
+
+      <div class="property-results">
+        <div class="property-results__head">
+          <h2 id="property-results-title">Property Files</h2>
+          <p class="property-results__count js-result-count" aria-live="polite">{{ items.length }} properties shown</p>
+        </div>
+
+        <div class="property-results__empty js-empty-state" hidden>No properties match the selected filters.</div>
+
+        <div class="property-card-list js-property-results">
+          {% for property in items %}
+          {% set coords = property.coordinates.decimal %}
+          {% set nearest = property.nearestSettlements[0] %}
+          <article
+            class="property-list-card js-property-card"
+            data-commodities="{{ property.commodities | join(' ') | lower }}"
+            data-county="{{ property.county | lower }}"
+            data-deposit="{{ property.depositType | lower }}"
+          >
+            <div class="property-list-card__media" aria-label="Photo placeholder for {{ property.name }}">
+              <span class="mono">[CLIENT PHOTO &mdash; TBD]</span>
+            </div>
+            <div class="property-list-card__body">
+              <p class="eyebrow">{{ property.type or "Mining property" }}</p>
+              <h3>{{ property.name }}</h3>
+              <p class="property-list-card__locality">{{ property.district or "District not listed" }} &middot; {{ property.county or "County not listed" }} &middot; Nevada</p>
+
+              <dl class="property-list-card__data">
+                <div>
+                  <dt>Coordinates</dt>
+                  <dd class="mono numerals-data">{% if coords and coords.lat and coords.lng %}{{ coords.lat }}, {{ coords.lng }}{% else %}Not listed{% endif %}</dd>
+                </div>
+                <div>
+                  <dt>Deposit Type</dt>
+                  <dd>{{ property.depositType or "Not listed" }}</dd>
+                </div>
+                <div>
+                  <dt>Commodities</dt>
+                  <dd class="commodity-list">
+                    {% for commodity in property.commodities %}
+                    <span>{{ commodity }}</span>
+                    {% else %}
+                    <span>Not listed</span>
+                    {% endfor %}
+                  </dd>
+                </div>
+                <div>
+                  <dt>Climate</dt>
+                  <dd>{% if property.climate %}<span class="mono numerals-data">{{ property.climate.koppen }}</span> &middot; {{ property.climate.description }}{% else %}Not listed{% endif %}</dd>
+                </div>
+                <div>
+                  <dt>Nearest Settlement</dt>
+                  <dd>{% if nearest %}{{ nearest.name }} &middot; <span class="mono numerals-data">{{ nearest.distanceKm }} km</span>{% else %}Not listed{% endif %}</dd>
+                </div>
+                <div>
+                  <dt>Mindat ID</dt>
+                  <dd class="mono numerals-data">{{ property.mindatId or "Not listed" }}</dd>
+                </div>
+                {% if property.usgsMrds %}
+                <div>
+                  <dt>MRDS ID</dt>
+                  <dd class="mono numerals-data">{{ property.usgsMrds }}</dd>
+                </div>
+                {% endif %}
+              </dl>
+
+              <a class="property-list-card__link" href="/properties/{{ property.slug }}/">View full property file <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="source-band" aria-labelledby="source-note-title">
+    <div class="source-band__inner">
+      <h2 id="source-note-title">Source and Due Diligence</h2>
+      <p>Property data is based on public USGS MRDS and Mindat geological records. Prospective buyers should conduct independent due diligence, including title verification, mineral rights review, and on-site inspection.</p>
+      <a href="/due-diligence/">Read due diligence notes</a>
+    </div>
+  </section>
+
+  <section class="content-cta on-bg" aria-labelledby="packet-title">
+    <div class="content-cta__inner">
+      <div>
+        <p class="eyebrow">Direct inquiry</p>
+        <h2 id="packet-title">Request a property packet</h2>
+      </div>
+      <div class="content-cta__links">
+        <p>Inquiries are reviewed by Dennis Blancey directly.</p>
+        <a class="btn btn--primary" href="/contact/">Contact Goldstone LLC</a>
+      </div>
+    </div>
+  </section>
+</article>
+{% endblock %}

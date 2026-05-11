@@ -31,6 +31,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("env", env);
   eleventyConfig.addGlobalData("isProd", isProd);
   eleventyConfig.addGlobalData("maptilerKey", process.env.MAPTILER_KEY || "");
+  eleventyConfig.addGlobalData("buildDate", new Date());
 
   /* ── Dev-only page gate ───────────────────────────────────────── *
    * Set `devOnly: true` in a page's front matter to exclude it from
@@ -62,6 +63,29 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("pluck", (items, key) =>
     (items || []).map((item) => item[key])
   );
+
+  eleventyConfig.addFilter("sitemapPages", (items) => {
+    const seen = new Set();
+    return (items || [])
+      .filter((item) =>
+        item.url &&
+        item.outputPath &&
+        item.outputPath.endsWith(".html") &&
+        !item.data.devOnly &&
+        !item.data.noindex &&
+        item.data.permalink !== false
+      )
+      .map((item) => ({
+        url: item.url,
+        date: item.date,
+      }))
+      .filter((item) => {
+        if (seen.has(item.url)) return false;
+        seen.add(item.url);
+        return true;
+      })
+      .sort((a, b) => a.url.localeCompare(b.url));
+  });
 
   eleventyConfig.addFilter("propertyJsonLd", (property, site, pageUrl) => {
     const url = `${site.url}${pageUrl}`;

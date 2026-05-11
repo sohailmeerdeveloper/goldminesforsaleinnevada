@@ -1,10 +1,8 @@
 {
   "_meta": {
-    "source": "Mindat.org locality pages (60622, 59702) cross-checked against client-supplied PDFs and pre-extracted summary in /reference. Do not embellish.",
+    "source": "Mindat.org locality pages (60622, 59702) and USGS MRDS records (10044101, 10014368) cross-checked against client-supplied PDFs and pre-extracted summary in /reference. Do not embellish.",
     "note_minerals_adelaide": "10 valid minerals per Mindat; vesuvianite additionally reported in mine waste dumps.",
-    "todos": {
-      "lynn-creek-placers.usgsMrds": "Mindat page (loc-60622) shows an Other Databases > USGS MRDS link with a record number. Fetch the exact MRDS ID from mindat.org/loc-60622.html and replace null. Until then the property template must NOT render the MRDS link block for Lynn Creek."
-    }
+    "render_note": "Templates must iterate properties.items only. The _meta key is metadata for editors and must never render to a page."
   },
   "items": [
     {
@@ -26,7 +24,8 @@
       ],
       "mindatId": 60622,
       "mindatUrl": "https://www.mindat.org/loc-60622.html",
-      "usgsMrds": null,
+      "usgsMrds": "10044101",
+      "usgsMrdsUrl": "https://mrdata.usgs.gov/mrds/show-mrds.php?dep_id=10044101",
       "longFormId": "mindat:1:2:60622:3",
       "guid": "0",
       "deposit": "The channel extends eastward from the lode mining area for approximately 4 miles. In the upper 2.5 miles the gravels average 25 ft wide and 10 to 28 ft deep, and the pay streak is the first 1.5 ft of alluvium lying on bedrock.",

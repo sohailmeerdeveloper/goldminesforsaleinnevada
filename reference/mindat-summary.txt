@@ -1,0 +1,114 @@
+Details from Mindat Pages for Your Nevada Properties
+
+This report collates all of the information provided on the Mindat pages you shared. Each property is summarized separately with sections for location, deposit geology, mineral and commodity lists, rock formations, development history and references. Where possible, exact quoted text is preserved and citations point back to the Mindat pages.
+
+1. Lynn Creek placers (Mindat locality ID 60622) – Lynn Mining District, Eureka County, Nevada, USA
+Location and basic data
+Locality name: Lynn Creek placers – part of the Lynn Mining District in Eureka County, Nevada, USA.
+Type of locality: This locality is classified as a group of placers.
+Coordinates:
+WGS 84 (degrees, minutes, seconds): 40° 55′ 32″ North, 116° 17′ 20″ West.
+Decimal degrees: 40.92575 N, ‑116.28897 W.
+Climate: The Köppen climate type is BSk (cold semi‑arid/steppe).
+Nearest settlements: The nearest town listed is Carlin (population 2,302 in 2017) located about 28.2 km away.
+Identifiers:
+Mindat locality ID: 60622.
+Long‑form identifier: mindat:1:2:60622:3.
+GUID: 0.
+Deposit description and geology
+The deposit is a channel extending eastward from the lode mining area for about 4 miles. In the upper 2.5 miles the gravels are ~25 ft wide and 10 to 28 ft deep, and the pay streak (productive alluvial layer) is the first 1.5 ft of alluvium lying on bedrock.
+Workings: numerous cuts, pits, trenches and shafts.
+Reserves: Indicated reserves exceed 1 million cubic yards.
+History: The channel was being worked by the Ura Gold Mines Co. in 1952.
+Deposit type: Placer Au‑PGE (placer deposit containing gold and platinum‑group elements).
+Geology: Gold is probably derived from mineralized shear zones in chert and shale of the Vinini Formation. The gold recovered is very fine, averaging 920 to 960 fine.
+Rock formation(s): The placer deposit is hosted in stream gravels.
+Commodities and minerals
+Commodity list: The only exploitable commodity recorded at this locality is gold (Au).
+Mineral list: Four minerals are recorded at this locality:
+Bismite (Bi₂O₃).
+Bismuthinite (Bi₂S₃).
+Bismutite ((BiO)₂CO₃).
+Native Gold (Au).
+Strunz‑10 classifications:
+Group 1 – Elements: Native Gold (Au).
+Group 2 – Sulphides and sulfosalts: Bismuthinite (Bi₂S₃).
+Group 4 – Oxides and hydroxides: Bismite (Bi₂O₃).
+Group 5 – Carbonates: Bismutite ((BiO)₂CO₃).
+Notes and cautions
+
+Mindat states that the page contains all available mineral locality references and may not be complete. It cautions readers not to visit sites without obtaining permission from land and mineral rights holders and ensuring appropriate safety precautions.
+
+2. Adelaide Mine (Mindat locality ID 59702) – Gold Run Mining District, Humboldt County, Nevada, USA
+Location and basic data
+Locality name: Adelaide mine – part of the Gold Run Mining District in Humboldt County, Nevada, USA.
+Type of locality: Mine.
+Coordinates:
+WGS 84 (degrees, minutes, seconds): 40° 48′ 18″ North, 117° 29′ 40″ West.
+Decimal degrees: 40.80509 N, ‑117.49462 W.
+Climate: Köppen type BSk (cold semi‑arid/steppe).
+Nearest settlements:
+Golconda – population 214 (2011) – 16.5 km away.
+Winnemucca – population 7,887 (2017) – 27.5 km away.
+Identifiers:
+Mindat locality ID: 59702.
+Long‑form identifier: mindat:1:2:59702:2.
+GUID: 0.
+Other/historical names: Nbmg Sample Site 2301 and Sec 20 T34N R40E.
+Structural setting: The area is affected by NE‑trending folds and faults.
+Alteration: Oxidation.
+Deposit description and history
+Deposit type: Skarn Cu.
+Deposit description: It is a sulfide replacement of marble and calcareous siltstone. Replacement bodies appear to follow “transposed bedding” (isoclinally folded rock) with north‑trending high‑angle faults and low‑angle thrust faults influencing localization. Rocks east of the replaced units are hard, laminated sandstone and siltstone. Carbonate‑bearing rocks are converted to calcsilicate rocks with light brown garnet, and vesuvianite and scheelite are reported in mine waste dumps.
+History and development:
+Discovery: 1860s.
+The mine operated from the 1860s through 1940, producing the major portion of the gold, silver, copper and lead for the district.
+Production resumed in 1980 when Bullion Monarch Co. owned a 50 % interest in M.& B. Mining Co.; by October 1980 about 1,000 tons of ore had been mined and stockpiled for delivery to Monarch’s 200‑ton‑per‑day flotation mill at Austin.
+The property was inactive in 1984 according to Garside.
+Geology and rock formations
+Ore minerals: The ore consists mainly of chalcopyrite, pyrrhotite and minor sphalerite and galena in a gangue of calcite, garnet and vesuvianite.
+Replacement bodies: These replacement‑type bodies occur in limestone interbedded with dark calcareous phyllite.
+Scheelite traces: Scheelite is reported in the mine waste dumps.
+Rock formation(s): Listed as the Preble Formation (duplicated entry suggests both the host and footwall are Preble Formation).
+Ore structural control: The ore occurs in a fault zone.
+Commodities and minerals
+Commodity list: The exploitable commodities recorded at this locality are copper, gold, lead, silver, tungsten and zinc.
+Mineral list: Ten minerals are recorded at this locality:
+Calcite – CaCO₃.
+Chalcopyrite – CuFeS₂.
+Diopside – CaMgSi₂O₆.
+Galena – PbS.
+“Garnet Group” – general formula X₃Z₂(SiO₄)₃.
+Orthoclase – K(AlSi₃O₈).
+Pyrrhotite – Fe₁₋ₓS.
+Quartz – SiO₂.
+Scheelite – Ca(WO₄).
+Sphalerite – ZnS.
+Vesuvianite – complex calcium‑iron‑aluminium silicate (recorded formula: Ca₁₉Fe³⁺Al₄(Al₆Mg₂)□₄□[Si₂O₇]₄[(SiO₄)₁₀]O(OH)₉). Note: Although Mindat lists 10 valid minerals, vesuvianite is counted separately here for completeness.
+Rock types recorded: Sedimentary rock and sediment → Sedimentary rock → Biochemical and chemical sedimentary rock (limestone is part of this group).
+Strunz‑10 classifications:
+Group 2 (sulphides and sulfosalts): Sphalerite, Chalcopyrite, Pyrrhotite and Galena.
+Group 4 (oxides and hydroxides): Quartz.
+Group 5 (carbonates): Calcite.
+Group 7 (sulphates, chromates, molybdates and tungstates): Scheelite.
+Group 9 (silicates): Vesuvianite, Diopside and Orthoclase.
+Unclassified: the Garnet Group.
+References and other databases
+USGS MRDS (Mineral Resources Data System): Mindat links to the MRDS entry for this mine (record 10014368).
+Additional references: Mindat lists several published and unpublished studies about the Adelaide mine, including:
+Ransome (1909), Notes on Some Mining Districts in Humboldt County, Nevada.
+Couch & Carpenter (1943), Nevada's Metal and Mineral Production (1859‑1940).
+Willden (1964), Geology and Mineral Deposits of Humboldt County, Nevada.
+Berger (1975), Report of Property Examination, Adelaide Mine.
+Marsh & Erickson (1978), Geologic Map of the Gold Run Creek Quad.
+Garside (1984), Field Investigation and Sample Analysis.
+Stager & Tingley (1988), Tungsten Deposits in Nevada.
+Notes and cautions
+
+As with other Mindat localities, the page warns that it may not represent a complete record and urges visitors not to enter sites without permission and proper safety precautions.
+
+General Observations for Your Website
+Use accurate coordinates and climate classifications: These provide potential visitors or researchers with geographic context and environmental information. Both properties lie in a cold semi‑arid (BSk) climate.
+Highlight unique deposit features: Lynn Creek placers are a pure placer deposit with large reserves of fine gold, whereas the Adelaide Mine is a historic skarn‑type copper‑gold‑silver lead deposit with complex geology and multiple ore minerals.
+Include mineral and commodity lists: These lists—gold at Lynn Creek and copper, gold, lead, silver, tungsten and zinc at the Adelaide Mine—can interest mineral collectors or investors.
+Consider referencing Mindat guidelines: Mindat encourages users to respect property rights and safety; including a similar disclaimer on your website would be prudent.

@@ -1,0 +1,113 @@
+{
+  "_meta": {
+    "source": "Mindat.org locality pages (60622, 59702) cross-checked against client-supplied PDFs and pre-extracted summary in /reference. Do not embellish.",
+    "note_minerals_adelaide": "10 valid minerals per Mindat; vesuvianite additionally reported in mine waste dumps.",
+    "todos": {
+      "lynn-creek-placers.usgsMrds": "Mindat page (loc-60622) shows an Other Databases > USGS MRDS link with a record number. Fetch the exact MRDS ID from mindat.org/loc-60622.html and replace null. Until then the property template must NOT render the MRDS link block for Lynn Creek."
+    }
+  },
+  "items": [
+    {
+      "slug": "lynn-creek-placers",
+      "name": "Lynn Creek Placers",
+      "district": "Lynn Mining District",
+      "county": "Eureka County",
+      "state": "Nevada",
+      "country": "USA",
+      "type": "Group of placers",
+      "depositType": "Placer Au-PGE",
+      "coordinates": {
+        "dms": "40° 55′ 32″ N, 116° 17′ 20″ W",
+        "decimal": { "lat": 40.92575, "lng": -116.28897 }
+      },
+      "climate": { "koppen": "BSk", "description": "Cold semi-arid (steppe)" },
+      "nearestSettlements": [
+        { "name": "Carlin, NV", "population": 2302, "year": 2017, "distanceKm": 28.2 }
+      ],
+      "mindatId": 60622,
+      "mindatUrl": "https://www.mindat.org/loc-60622.html",
+      "usgsMrds": null,
+      "longFormId": "mindat:1:2:60622:3",
+      "guid": "0",
+      "deposit": "The channel extends eastward from the lode mining area for approximately 4 miles. In the upper 2.5 miles the gravels average 25 ft wide and 10 to 28 ft deep, and the pay streak is the first 1.5 ft of alluvium lying on bedrock.",
+      "workings": "Numerous cuts, pits, trenches, and shafts.",
+      "reserves": "Indicated reserves exceed 1 million cubic yards.",
+      "geology": "Gold is probably derived from mineralized shear zones in chert and shale of the Vinini Formation. The recovered gold is very fine, averaging 920 to 960 fineness.",
+      "hostRocks": ["Stream gravels"],
+      "history": [
+        { "year": 1952, "event": "Channel being worked by the Ura Gold Mines Co." }
+      ],
+      "commodities": ["Au"],
+      "minerals": [
+        { "name": "Native Gold", "formula": "Au", "strunz": "1 — Elements" },
+        { "name": "Bismuthinite", "formula": "Bi₂S₃", "strunz": "2 — Sulphides and sulfosalts" },
+        { "name": "Bismite", "formula": "Bi₂O₃", "strunz": "4 — Oxides and hydroxides" },
+        { "name": "Bismutite", "formula": "(BiO)₂CO₃", "strunz": "5 — Carbonates" }
+      ],
+      "references": []
+    },
+    {
+      "slug": "adelaide-mine",
+      "name": "Adelaide Mine",
+      "district": "Gold Run Mining District",
+      "county": "Humboldt County",
+      "state": "Nevada",
+      "country": "USA",
+      "type": "Mine",
+      "depositType": "Skarn Cu",
+      "coordinates": {
+        "dms": "40° 48′ 18″ N, 117° 29′ 40″ W",
+        "decimal": { "lat": 40.80509, "lng": -117.49462 }
+      },
+      "climate": { "koppen": "BSk", "description": "Cold semi-arid (steppe)" },
+      "nearestSettlements": [
+        { "name": "Golconda, NV", "population": 214, "year": 2011, "distanceKm": 16.5 },
+        { "name": "Winnemucca, NV", "population": 7887, "year": 2017, "distanceKm": 27.5 }
+      ],
+      "mindatId": 59702,
+      "mindatUrl": "https://www.mindat.org/loc-59702.html",
+      "usgsMrds": "10014368",
+      "usgsMrdsUrl": "https://mrdata.usgs.gov/mrds/show-mrds.php?dep_id=10014368",
+      "longFormId": "mindat:1:2:59702:2",
+      "guid": "0",
+      "historicalNames": ["NBMG Sample Site 2301", "Sec 20 T34N R40E"],
+      "structuralSetting": "NE-trending folds and faults.",
+      "alteration": "Oxidation.",
+      "deposit": "Sulfide replacement of marble and calcareous siltstone. Replacement bodies appear to follow transposed bedding (isoclinally folded rock), with north-trending high-angle faults and low-angle thrust faults influencing localization. Rocks east of the replaced units are hard, laminated sandstone and siltstone. Carbonate-bearing rocks are converted to calcsilicate rocks with light brown garnet; vesuvianite and scheelite are reported in mine waste dumps.",
+      "ore": "Chalcopyrite, pyrrhotite, and minor sphalerite and galena in a gangue of calcite, garnet, and vesuvianite.",
+      "structuralControl": "Fault zone.",
+      "hostRocks": ["Preble Formation"],
+      "hostDescription": "Limestone interbedded with dark calcareous phyllite.",
+      "history": [
+        { "year": "1860s", "event": "Discovery and start of operations." },
+        { "year": "1860s–1940", "event": "Operated continuously; produced the major portion of the gold, silver, copper, and lead for the district." },
+        { "year": 1980, "event": "Production resumed; Bullion Monarch Co. held a 50% interest in M.& B. Mining Co. By October 1980 about 1,000 tons of ore had been mined and stockpiled for delivery to Monarch's 200-tons-per-day flotation mill at Austin." },
+        { "year": 1984, "event": "Reported inactive by Garside." }
+      ],
+      "commodities": ["Cu", "Au", "Pb", "Ag", "W", "Zn"],
+      "minerals": [
+        { "name": "Calcite", "formula": "CaCO₃", "strunz": "5 — Carbonates" },
+        { "name": "Chalcopyrite", "formula": "CuFeS₂", "strunz": "2 — Sulphides and sulfosalts" },
+        { "name": "Diopside", "formula": "CaMgSi₂O₆", "strunz": "9 — Silicates" },
+        { "name": "Galena", "formula": "PbS", "strunz": "2 — Sulphides and sulfosalts" },
+        { "name": "Garnet Group", "formula": "X₃Z₂(SiO₄)₃", "strunz": "Unclassified" },
+        { "name": "Orthoclase", "formula": "K(AlSi₃O₈)", "strunz": "9 — Silicates" },
+        { "name": "Pyrrhotite", "formula": "Fe₁₋ₓS", "strunz": "2 — Sulphides and sulfosalts" },
+        { "name": "Quartz", "formula": "SiO₂", "strunz": "4 — Oxides and hydroxides" },
+        { "name": "Scheelite", "formula": "Ca(WO₄)", "strunz": "7 — Sulphates, chromates, molybdates and tungstates" },
+        { "name": "Sphalerite", "formula": "ZnS", "strunz": "2 — Sulphides and sulfosalts" },
+        { "name": "Vesuvianite", "formula": "Ca₁₉Fe³⁺Al₄(Al₆Mg₂)□₄□[Si₂O₇]₄[(SiO₄)₁₀]O(OH)₉", "strunz": "9 — Silicates" }
+      ],
+      "mineralsNote": "10 valid minerals per Mindat; vesuvianite additionally reported in mine waste dumps.",
+      "references": [
+        "Ransome (1909). Notes on Some Mining Districts in Humboldt County, Nevada.",
+        "Couch & Carpenter (1943). Nevada's Metal and Mineral Production (1859–1940).",
+        "Willden (1964). Geology and Mineral Deposits of Humboldt County, Nevada.",
+        "Berger (1975). Report of Property Examination, Adelaide Mine.",
+        "Marsh & Erickson (1978). Geologic Map of the Gold Run Creek Quadrangle.",
+        "Garside (1984). Field Investigation and Sample Analysis.",
+        "Stager & Tingley (1988). Tungsten Deposits in Nevada."
+      ]
+    }
+  ]
+}

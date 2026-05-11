@@ -1,0 +1,26 @@
+{
+  "name": "Goldstone LLC",
+  "tagline": "Copper. Silver. Gold. Nevada Mining Properties.",
+  "since": 1989,
+  "url": "https://goldminesforsaleinnevada.com",
+  "domain": "goldminesforsaleinnevada.com",
+  "principal": {
+    "name": "Dennis Blancey",
+    "role": "President & Owner"
+  },
+  "contact": {
+    "phones": ["+1 775 400 5337", "+1 775 544 8494"],
+    "phonesTel": ["+17754005337", "+17755448494"],
+    "email": "Grandnevadacorp@gmail.com"
+  },
+  "offices": [
+    { "city": "Carlin", "state": "NV", "postal": "89822" },
+    { "city": "Golconda", "state": "NV", "postal": "89414" },
+    { "city": "Carson City", "state": "NV", "postal": "89702" }
+  ],
+  "social": {},
+  "default_meta": {
+    "description": "Goldstone LLC markets patented gold, copper and silver mining properties in Eureka and Humboldt Counties, Nevada — documented in USGS MRDS and Mindat. Direct from the principal, Dennis Blancey. Operating since 1989.",
+    "image": "/assets/img/og-default.png"
+  }
+}

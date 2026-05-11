@@ -1,0 +1,19 @@
+{
+  "name": "goldminesforsaleinnevada",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Marketing website for Goldstone LLC — Nevada gold, copper and silver mining properties.",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve --quiet",
+    "watch": "eleventy --watch",
+    "debug": "DEBUG=Eleventy* eleventy",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+{#- USGS-style topographic contour pattern. Uses irregular nested closed
+    paths to evoke surveyed contour lines, not perfect circles or sine waves.
+    Inherits currentColor; opacity controlled by the wrapper. -#}
+<svg class="{{ class or 'topo-pattern' }}" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <pattern id="topo-{{ id or 'default' }}" x="0" y="0" width="600" height="400" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke">
+        {#- Cluster A — irregular nested contours around (180, 140) -#}
+        <path d="M 70 140 C 95 80, 200 60, 270 95 S 360 200, 295 245 S 130 260, 75 215 S 50 175, 70 140 Z" />
+        <path d="M 100 145 C 120 95, 200 80, 255 110 S 335 195, 280 230 S 145 240, 100 205 S 85 175, 100 145 Z" />
+        <path d="M 130 150 C 150 115, 200 105, 240 130 S 305 190, 265 215 S 165 220, 130 195 S 120 175, 130 150 Z" />
+        <path d="M 160 155 C 175 130, 210 125, 230 145 S 275 185, 250 200 S 185 200, 160 185 S 155 175, 160 155 Z" />
+        <path d="M 185 160 C 195 145, 215 140, 225 155 S 250 180, 240 190 S 205 192, 190 180 S 182 170, 185 160 Z" />
+        <circle cx="208" cy="172" r="6" />
+
+        {#- Cluster B — broader, lower-density set around (440, 240) -----#}
+        <path d="M 330 270 C 345 215, 470 200, 540 230 S 580 320, 520 345 S 360 340, 330 305 S 320 285, 330 270 Z" />
+        <path d="M 360 275 C 370 235, 460 225, 515 245 S 555 315, 505 330 S 380 325, 360 300 S 350 285, 360 275 Z" />
+        <path d="M 390 280 C 400 255, 450 250, 490 265 S 520 305, 485 315 S 405 312, 390 295 S 385 285, 390 280 Z" />
+        <path d="M 420 285 C 430 270, 460 270, 475 285 S 490 305, 470 308 S 432 305, 422 295 S 418 290, 420 285 Z" />
+
+        {#- A solitary ridge line cutting across (suggests a fault) ------#}
+        <path d="M 0 360 C 80 340, 160 350, 240 330 S 380 290, 460 305 S 560 320, 600 310" stroke-dasharray="0" />
+        <path d="M 0 380 C 90 365, 170 372, 250 355 S 390 320, 470 332 S 565 348, 600 340" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#topo-{{ id or 'default' }})" />
+</svg>

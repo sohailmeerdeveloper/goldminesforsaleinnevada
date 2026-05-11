@@ -19,7 +19,7 @@
 
       {# ── Offices ───────────────────────────────────────────────── #}
       <div>
-        <h5 class="label">Offices</h5>
+        <h2 class="label">Offices</h2>
         <ul class="footer-offices">
           {% for office in site.offices %}
           <li>{{ office.city }}, {{ office.state }} {{ office.postal }}</li>
@@ -29,7 +29,7 @@
 
       {# ── Contact ───────────────────────────────────────────────── #}
       <div>
-        <h5 class="label">Contact</h5>
+        <h2 class="label">Contact</h2>
         <ul class="footer-offices">
           {% for i in range(0, site.contact.phones.length) %}
           <li><a href="tel:{{ site.contact.phonesTel[i] }}">{{ site.contact.phones[i] }}</a></li>
@@ -40,7 +40,7 @@
 
       {# ── Navigation ────────────────────────────────────────────── #}
       <div>
-        <h5 class="label">Navigate</h5>
+        <h2 class="label">Navigate</h2>
         <ul class="footer-offices">
           <li><a href="/properties/">Properties</a></li>
           <li><a href="/about/">About</a></li>

@@ -19,6 +19,11 @@
     { "city": "Carson City", "state": "NV", "postal": "89702" }
   ],
   "social": {},
+  "_meta": {
+    "a11y_followups": {
+      "homepage.on_bg_eyebrow_contrast": "Lighthouse flags the small copper-bright eyebrow on --bg as text contrast below 4.5:1. Handoff section 3.4 classifies these eyebrows as UI labels governed by WCAG 1.4.11 non-text contrast, where 3:1 is the intended bar; preserve --copper-bright unless the user reopens that locked decision."
+    }
+  },
   "default_meta": {
     "description": "Goldstone LLC markets patented gold, copper and silver mining properties in Eureka and Humboldt Counties, Nevada — documented in USGS MRDS and Mindat. Direct from the principal, Dennis Blancey. Operating since 1989.",
     "image": "/assets/img/og-default.png"

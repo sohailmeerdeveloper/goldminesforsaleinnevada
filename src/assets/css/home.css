@@ -187,12 +187,9 @@
   border-radius: var(--r-2);
   overflow: hidden;
   background: var(--bg);
-  aspect-ratio: 16 / 9;
 }
 .media-showcase__video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
 }
 .media-showcase__video-caption {
@@ -232,8 +229,7 @@
 }
 .media-showcase__thumb img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 .media-showcase__thumb-label {
@@ -271,17 +267,17 @@
 }
 
 /* ── Photo property card variant ───────────────────────────────── */
-.property-card__media--photo {
+.property-card__media.property-card__media--photo {
   padding: 0;
   background: var(--bg);
   position: relative;
   overflow: hidden;
+  aspect-ratio: unset;
 }
 .property-card__media--photo::before { content: none; }
 .property-card__media--photo img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
   transition: transform 0.4s var(--ease);
 }

@@ -126,14 +126,12 @@
 }
 .property-hero-image img {
   width: 100%;
+  height: auto;
   display: block;
   border-radius: var(--r-2);
-  aspect-ratio: 21 / 9;
-  object-fit: cover;
 }
 @media (max-width: 760px) {
   .property-hero-image img {
-    aspect-ratio: 16 / 9;
     border-radius: 0;
   }
   .property-hero-image__inner {

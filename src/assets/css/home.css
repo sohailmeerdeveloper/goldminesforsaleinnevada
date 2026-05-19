@@ -86,14 +86,14 @@
 }
 .btn--ghost:hover { background: rgba(244, 239, 230, 0.08); color: var(--paper-pure); border-color: var(--paper-pure); }
 .btn--outline {
-  background: transparent;
-  color: var(--copper);
+  background: var(--copper);
+  color: var(--paper-pure);
   border: 2px solid var(--copper);
 }
 .btn--outline:hover {
-  background: var(--copper);
+  background: var(--copper-deep);
+  border-color: var(--copper-deep);
   color: var(--paper-pure);
-  border-color: var(--copper);
 }
 .btn__arrow { transition: transform var(--dur) var(--ease); }
 .btn:hover .btn__arrow { transform: translateX(3px); }
@@ -197,18 +197,18 @@
   position: relative;
   border-radius: var(--r-2);
   overflow: hidden;
-  background: var(--bg);
+  background: #000;
   width: 320px;
-  max-height: 580px;
+  aspect-ratio: 9 / 16;
 }
 @media (max-width: 900px) {
   .media-showcase__video-wrap { width: 100%; max-width: 360px; margin-inline: auto; }
 }
 .media-showcase__video {
   width: 100%;
-  max-height: 580px;
+  height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   background: #000;
 }
 .media-showcase__video-caption {
@@ -248,8 +248,9 @@
 }
 .media-showcase__thumb img {
   width: 100%;
-  height: auto;
+  height: 280px;
   display: block;
+  object-fit: cover;
 }
 .media-showcase__thumb-label {
   display: block;

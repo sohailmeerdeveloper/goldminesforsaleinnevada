@@ -116,6 +116,31 @@
   }
 }
 
+.property-hero-image {
+  background: var(--bg);
+}
+.property-hero-image__inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.property-hero-image img {
+  width: 100%;
+  display: block;
+  border-radius: var(--r-2);
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+@media (max-width: 760px) {
+  .property-hero-image img {
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+  }
+  .property-hero-image__inner {
+    padding-inline: 0;
+  }
+}
+
 .property-body {
   padding-block: var(--s-9);
   background: var(--paper);

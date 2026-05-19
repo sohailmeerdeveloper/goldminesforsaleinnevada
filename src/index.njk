@@ -64,6 +64,59 @@ extra_js:
   </div>
 </section>
 
+{# ── Media showcase — video, documents, site photos ─────────────── #}
+<section class="media-showcase" aria-labelledby="media-h2">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="eyebrow">Evidence &amp; exploration</span>
+      <h2 id="media-h2">See the properties. Study the record.</h2>
+    </header>
+
+    <div class="media-showcase__grid">
+      <div class="media-showcase__primary">
+        <div class="media-showcase__video-wrap">
+          <video
+            class="media-showcase__video"
+            controls
+            preload="metadata"
+            poster="/assets/img/lynn-creek-aerial.jpg"
+            aria-label="Video overview of gold mining history and opportunity in Nevada"
+          >
+            <source src="/assets/img/nevada-gold-history.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="media-showcase__video-caption">
+          <h3>Gold in Nevada: History &amp; Opportunity</h3>
+          <p>Nevada has produced over 200 million ounces of gold since the Comstock Lode era of the 1850s, making it the top gold-producing state in the U.S. and one of the largest gold regions on Earth. The Carlin Trend alone, discovered in 1961, hosts some of the richest deposits ever found. With major producers like Newmont and Barrick operating massive open-pit mines just miles from our properties, the geology of north-central Nevada continues to attract global mining investment.</p>
+        </div>
+      </div>
+
+      <div class="media-showcase__sidebar">
+        <a href="/assets/img/placer-gold-deposits-nevada.jpg" class="media-showcase__thumb" target="_blank" rel="noopener">
+          <img src="/assets/img/placer-gold-deposits-nevada.jpg" alt="1965 USGS publication — Placer Gold Deposits of Nevada, Eureka County section documenting Lynn Creek district" loading="lazy">
+          <span class="media-showcase__thumb-label">1965 USGS Record &mdash; Lynn District</span>
+        </a>
+        <a href="/assets/img/lynn-creek-property-map.jpg" class="media-showcase__thumb" target="_blank" rel="noopener">
+          <img src="/assets/img/lynn-creek-property-map.jpg" alt="Google Earth overview of Lynn Creek Placer Property showing proximity to Barrick Goldstrike and Newmont operations" loading="lazy">
+          <span class="media-showcase__thumb-label">Lynn Creek &mdash; Property Overview Map</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="media-showcase__context">
+      <div class="media-showcase__context-block">
+        <h3>Documented Since 1965</h3>
+        <p>The Lynn Creek placer district appears in the 1965 USGS publication on Placer Gold Deposits of Nevada. The government report documents that placers in this district were discovered in 1907, with mining nearly continuous since that time, yielding hundreds of ounces of gold per year. The recovered gold is exceptionally fine, averaging 920&ndash;960 fineness, and company estimates placed reserves exceeding one million cubic yards of auriferous gravel.</p>
+      </div>
+      <div class="media-showcase__context-block">
+        <h3>Surrounded by Major Producers</h3>
+        <p>Both Goldstone properties sit within Nevada&rsquo;s most prolific gold-producing region. The Lynn Creek property lies near Barrick&rsquo;s Goldstrike complex and Newmont&rsquo;s operations along the Carlin Trend. The Adelaide Mine is located in the Gold Run Mining District of Humboldt County, an area with documented production of copper, gold, silver, and lead dating back to the 1860s. These are not speculative claims &mdash; they are patented properties with verifiable public records.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 {# ── Featured properties ─────────────────────────────────────────── #}
 <section class="featured-properties" aria-labelledby="featured-h2">
   <div class="wrap">
@@ -75,16 +128,15 @@ extra_js:
     {% set lynn = properties.items[0] %}
     {% set adelaide = properties.items[1] %}
 
-    {# Property 1 — Lynn Creek (map left, will be replaced by client photo later) #}
+    {# Property 1 — Lynn Creek #}
     <article class="property-card-large">
-      <div
-        class="property-card__media property-card__media--map js-home-map"
-        role="img"
-        aria-label="Map preview of Lynn Creek Placers at {{ lynn.coordinates.decimal.lat }}, {{ lynn.coordinates.decimal.lng }}"
-        data-lat="{{ lynn.coordinates.decimal.lat }}"
-        data-lng="{{ lynn.coordinates.decimal.lng }}"
-        data-name="{{ lynn.name }}"
-      ></div>
+      <div class="property-card__media property-card__media--photo">
+        <img src="/assets/img/lynn-creek-aerial.jpg" alt="Google Earth aerial view of Lynn Creek 320 Acres showing proximity to Newmont Gold and Barrick Goldstrike operations" loading="lazy">
+        <a class="property-card__map-toggle" href="/properties/{{ lynn.slug }}/#map" title="View on interactive map">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 3.5l4.5-2 5 2 4.5-2v11l-4.5 2-5-2-4.5 2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M5.5 1.5v11M10.5 3.5v11" stroke="currentColor" stroke-width="1.2"/></svg>
+          Map
+        </a>
+      </div>
       <div class="property-card__body">
         <h3 class="property-card__name">{{ lynn.name }}</h3>
         <p class="property-card__locality">
@@ -107,16 +159,15 @@ extra_js:
       </div>
     </article>
 
-    {# Property 2 — Adelaide (map right, will be replaced by client photo later) #}
+    {# Property 2 — Adelaide #}
     <article class="property-card-large property-card-large--reverse">
-      <div
-        class="property-card__media property-card__media--map js-home-map"
-        role="img"
-        aria-label="Map preview of Adelaide Mine at {{ adelaide.coordinates.decimal.lat }}, {{ adelaide.coordinates.decimal.lng }}"
-        data-lat="{{ adelaide.coordinates.decimal.lat }}"
-        data-lng="{{ adelaide.coordinates.decimal.lng }}"
-        data-name="{{ adelaide.name }}"
-      ></div>
+      <div class="property-card__media property-card__media--photo">
+        <img src="/assets/img/adelaide-mine-aerial.jpg" alt="Google Earth aerial view of Adelaide Mine in Gold Run Creek showing proximity to Newmont Gold's Adelaide Crown Mine" loading="lazy">
+        <a class="property-card__map-toggle" href="/properties/{{ adelaide.slug }}/#map" title="View on interactive map">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 3.5l4.5-2 5 2 4.5-2v11l-4.5 2-5-2-4.5 2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M5.5 1.5v11M10.5 3.5v11" stroke="currentColor" stroke-width="1.2"/></svg>
+          Map
+        </a>
+      </div>
       <div class="property-card__body">
         <h3 class="property-card__name">{{ adelaide.name }}</h3>
         <p class="property-card__locality">
